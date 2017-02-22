@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<html>
+	<head>
+		<title>Artbud</title>
+	</head>
+	
+	<body>		
+		<h1> Artbud </h1>
+		<div>
+			This is the index page! <br />
+			<strong>{{ boldmessage }}</strong><br />
+		</div>
+		
+		<div>
+			<a href="/artbud/about/">About</a><br />
+			<img src="{% static "images/art.jpg" %}"alt="Picture of Art" />
+		<div>
+		</body>
+</html>
