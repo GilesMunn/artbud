@@ -36,9 +36,9 @@ def populate():
 		{'title': 'Modern dykes, windmills and highways in the Netherlands',
 		'url':'https://files.brightside.me/files/news/part_4/46555/208855-3432610-1000-1446444849comment_pngkZ7y3otB9J0WJmTBEYYcmM3S6Tydz-1000-6d51e333c8-1484729696.jpg', 'views': 27 },
 		{'title': 'A temple covered in ash from the Ontake volcanic eruption, Japan',
-		'url':'https://brightside.me/article/100-best-photographs-without-photoshop-46555/#image1666460', 'views': 135},
+		'url':'https://files.brightside.me/files/news/part_4/46555/209105-3446910-1000-144645398520141015-ontake-1000-66810123c4-1484729696.jpg', 'views': 135},
 		{'title': 'Two worlds divided, New York, USA',
-		'url':'https://brightside.me/article/100-best-photographs-without-photoshop-46555/#image1666610', 'views': 400 } ]
+		'url':'https://files.brightside.me/files/news/part_4/46555/209955-d-v-a-a-1000-1446452908-1000-6e726f73ab-1484729696.jpg', 'views': 400 } ]
 		
 	artwork = {'Abstract': {'pages': abstract_pages, 'views': 150, 'likes': 112 },
 			   'Still Life': {'pages': still_life_pages, 'views': 10, 'likes': 3 },

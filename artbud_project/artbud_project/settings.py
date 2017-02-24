@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'artbud',
-	'registration'
+	'registration',
+	'bootstrap_toolkit'
 ]
 
 MIDDLEWARE = [
