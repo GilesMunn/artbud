@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Artbud - About</title>
-	</head>
-	
-	<body>		
-		<h1> Artbud </h1>
-		<div>
-			This is the about page! <br />
-			<strong>{{ boldmessage }}</strong><br />
-		</div>
-	
-		<div>
-			<a href="/artbud/">Index</a><br />
-			<img src="{{MEDIA_URL}}mona.jpg" alt="Mona Lisa" />
-		</div>
-		</body>
-</html>
+{% extends 'artbud/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+		About
+	{% endblock %}
+
+	{% block body_block %}
+        <div>
+	        <h1 class="page-header">About Page</h1>			
+			Welcome to the About Page!
+		</div>	
+		<p>
+		<p> Visits: {{ visits }}</p>
+		<img src="{{MEDIA_URL}}mona.jpg" alt="Mona Lisa">
+	</p>
+	{% endblock %}

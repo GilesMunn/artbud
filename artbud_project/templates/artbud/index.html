@@ -1,29 +1,50 @@
-<!DOCTYPE html>
+{% extends 'artbud/base.html' %}
 {% load staticfiles %}
 
-<html>
-	<head>
-		<title>Artbud</title>
-	</head>
+{% block title_block %}
+	Index
+{% endblock %}
 
-	<body>
-		<h1> Artbud </h1>
-		<div>Welcome to the Index page.</div>
-		<div>
-			{% if categories %}
-			<ul>
-			{% for category in categories %}
-			<li>{{ category.name }}</li>
-			{% endfor %}
-			</ul>
+{% block body_block %}
+	<div>
+		<h1> Artbut</h1> 
+			{% if user.is_authenticated %}
+			Welcome, {{ user.username }}!
 			{% else %}
-			<strong>There are no categories present.</strong>
+			Welcome, Anonymous
 			{% endif %}
-		</div>
-
+	</div>	
 		<div>
-			<a href="/artbud/about/">About Artbud</a><br />
-			<img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" />
-		</div>
-	</body>
-</html>
+			<div>
+				<h3>Most Liked Categories</h3>	
+			</div>
+         	{% if categories %}
+             <ul>
+                 {% for category in categories %}
+                 	<li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
+                 {% endfor %}
+             </ul>
+        {% else %}
+             <strong>There are no categories present.</strong>
+        {% endif %}
+			</div>
+			
+				<div>
+					<div>
+						<h3>Most Viewed Pages</h3>	
+					</div>
+	         	   {% if pages %}
+	             	<ul>
+	                 {% for page in pages %}
+	                 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+	                 {% endfor %}
+	             	</ul>
+	        		{% else %}
+	             <strong>There are no categories present.</strong>
+	       	  		{% endif %}
+			</div>
+			
+        <img src="{% static "images/logo.jpg" %}" alt="Artbud logo" /> 
+	
+{% endblock %}
+
