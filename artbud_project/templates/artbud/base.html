@@ -66,6 +66,9 @@
                  	<li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
                  {% endfor %}
              </ul>
+            <p>
+			<ul><a href="{% url 'index' %}">Home</a></ul>
+			<ul><a href="{% url 'profile' user.username %}">Profile</a></ul>
 	        </ul>
             <hr />
 	<div id="cats">

@@ -5,7 +5,8 @@ from registration.backends.simple.views import RegistrationView
 
 class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
-		return '/artbud/'
+		return url('register_profile')
+
 
 
 app = 'artbud'
@@ -25,6 +26,12 @@ urlpatterns = [
 	url(r'^accounts/register/$',MyRegistrationView.as_view(),name='registration_register'),
 	
 	url(r'^accounts/', include('registration.backends.simple.urls')),
+	
+	url(r'^goto/$', views.track_url, name='goto'),
 
+	url(r'^register_profile/$', views.register_profile, name='register_profile'),
+	
+	url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
+	
 ]
 

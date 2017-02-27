@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.template.defaultfilters import slugify
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 
 class Category(models.Model):
 	name = models.CharField(max_length=128, unique=True)
@@ -45,3 +46,13 @@ class UserProfile(models.Model):
 		
 	def __unicode__(self):
 		return self.user.username
+		
+class UserProfileForm(forms.ModelForm):
+	website = forms.URLField(required=False)
+	picture = forms.ImageField(required=False)
+	
+	class Meta: 
+		model = UserProfile
+		exclude = ('user',)
+		
+		
