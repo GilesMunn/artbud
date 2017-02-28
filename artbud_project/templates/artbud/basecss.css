@@ -1,3 +1,8 @@
+
+body {
+    font-family: "Palatino Linotype";
+}
+
 ul {
     list-style-type: none;
     margin: 0;

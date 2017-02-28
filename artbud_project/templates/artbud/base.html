@@ -1,106 +1,94 @@
 <!DOCTYPE html>
+<!--{% load staticfiles %}-->
+
 <html lang="en">
-{% load staticfiles %}
-{% load artbud_template_tags %}
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
-
-      <title>{% block title %} Artbud {% endblock %}</title>
-      <!-- Bootstrap core CSS -->
-    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-	  <a href="{% static 'images/logo_square.png' %}">
-      <a class="navbar-brand" href="{% url 'index' %}"> Artbud - The Home of Art Lovers</a>
-
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-        {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'add_category' %}">Add a New Category</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'registration_register' %}">Register Here</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'auth_login' %}">Login</a>
-            </li>
-        {% endif %}
-        </ul>
-      </div>
-    </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-
-            <ul class="nav nav-pills flex-column">
-		       	 <ul>
-                 {% for category in categories %}
-                 	<li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a></li>
-                 {% endfor %}
-             </ul>
-            <p>
-			<ul><a href="{% url 'index' %}">Home</a></ul>
-			<ul><a href="{% url 'profile' user.username %}">Profile</a></ul>
-	        </ul>
-            <hr />
-	<div id="cats">
-	</div>
+<head>
 
 
-        </div>
-        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-         {% block body_block %}{% endblock %}
-
-
-        </div>
-      </div>
-    </div>
-
-     <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
- <!--
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
- -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <title>
+        Art Bud -
     <!--
-    <script src="http://v4-alpha.getbootstrap.com/assets/js/vendor/holder.min.js"></script>
-    -->
+        {% block title_block %}
+            Best Place for your Art
+        {% endblock %}
+        -->
+    </title>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="{% static "js/artbud-ajax.js" %}"></script>
-    <script src="{% static "js/artbud-jquery.js" %}"></script>
-  </body>
-</html>
+    <link rel="stylesheet" type="text/css" href="basecss.css">
+</head>
+<body>
+<table style="width:20%">
+    <tr>
+        <th><img src="artbudlogo.jpg" style="width:320px;height:180px;"></th>
+        <th>
+        <ul>
+            <!--{% if user.is_authenticated %}
+            <th>
+                <p></p>
+
+
+                <li style="float:right"><a class="active" href="default.html">Home</a></li>
+                <li style="float:right"><a href="base.html">Categories</a></li>
+                <li style="float:right"><a href="base.html">My Art</a></li>
+                <li style="float:right"><a href="base.html">Logout</a></li>
+
+            </th>
+            {% else %}-->
+
+
+
+
+                <li style="float:right"><a class="active" href="default.html">Home</a></li>
+                <li style="float:right"><a href="base.html">Categories</a></li>
+                <li style="float:right"><a href="base.html">Login</a></li>
+                <li style="float:right"><a href="base.html">Register</a></li>
+            <!--{% endif %}-->
+        </ul>
+
+        </th>
+    </tr>
+
+</table>
+<hr/>
+<!--
+{% block body_block %}
+{% endblock %}
+-->
+
+
+
+<table class="bot_bar" style="width: 100%">
+    <tr>
+
+
+        <th>
+            <hr/>
+            Recent Tweet
+
+            <p class="spec">Tweet from API?            </p>
+            <p class="spec">Maybe latest news or smth  </p>
+            <p class="spec">Count of users with us     </p>
+
+        </th>
+        <th>
+            <hr/>
+            About us
+
+            <p class="spec">We love art and we want to </p>
+            <p class="spec">share this love with the   </p>
+            <p class="spec">world.                     </p>
+        </th>
+        <th>
+            <hr/>
+            Contact us
+            <p class="spec">Email: artbud@artbud.co.uk </p>
+            <p class="spec">Twitter: Artbud            </p>
+            <p class="spec">Phone:0123213123           </p>
+
+        </th>
+    </tr>
+
+</table>
+
+<body/>
+<html/>
