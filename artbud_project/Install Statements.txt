@@ -1,0 +1,5 @@
+pip install Django==1.10.5
+
+pip install -U django-registration-redux==1.4
+
+pip install django-bootstrap-toolkit
