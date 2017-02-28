@@ -1,66 +1,50 @@
 <!DOCTYPE html>
-<!--{% load staticfiles %}-->
+{% load staticfiles %}
 
 <html lang="en">
 <head>
-
-
-    <title>
-        Art Bud -
-    <!--
+	<title>
+        Artbud -
         {% block title_block %}
             Best Place for your Art
         {% endblock %}
-        -->
     </title>
-
-    <link rel="stylesheet" type="text/css" href="basecss.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
 </head>
+
+<link rel="stylesheet" type="text/css" href="{%static 'css/basecss.css' %}" />
+
 <body>
-<table style="width:20%">
+<table style="width:10%">
     <tr>
-        <th><img src="artbudlogo.jpg" style="width:320px;height:180px;"></th>
+        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;"></th>
         <th>
         <ul>
-            <!--{% if user.is_authenticated %}
-            <th>
-                <p></p>
-
-
-                <li style="float:right"><a class="active" href="default.html">Home</a></li>
-                <li style="float:right"><a href="base.html">Categories</a></li>
-                <li style="float:right"><a href="base.html">My Art</a></li>
-                <li style="float:right"><a href="base.html">Logout</a></li>
-
-            </th>
-            {% else %}-->
-
-
-
-
-                <li style="float:right"><a class="active" href="default.html">Home</a></li>
-                <li style="float:right"><a href="base.html">Categories</a></li>
-                <li style="float:right"><a href="base.html">Login</a></li>
-                <li style="float:right"><a href="base.html">Register</a></li>
-            <!--{% endif %}-->
+            {% if user.is_authenticated %}
+                <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a></li>
+                <li style="float:right"><a href="{% url 'add_category' %}">Add category</a></li>
+                <li style="float:right"><a href="{% url 'profile' user.username %}">My Art</a></li>
+                <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
+            {% else %}
+                <li style="float:right"><a href="{% url 'auth_login' %}">Login</a><li>
+                <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
+                <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
+            {% endif %}
         </ul>
-
         </th>
     </tr>
 
 </table>
 <hr/>
-<!--
+
+
 {% block body_block %}
 {% endblock %}
--->
 
 
 
 <table class="bot_bar" style="width: 100%">
     <tr>
-
-
         <th>
             <hr/>
             Recent Tweet

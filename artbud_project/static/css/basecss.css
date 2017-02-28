@@ -1,6 +1,6 @@
 
 body {
-    font-family: "Palatino Linotype";
+    font-family: Century Gothic, sans-serif;
 }
 
 ul {
@@ -11,17 +11,18 @@ ul {
     background-color: #ffffff;
     position: fixed;
     top: 0;
-    width: 70%;
+    width: 80%;
 }
 
 li {
     float: left;
-    border-right: 5px solid #000000;
-    font-size: 32px;
-    padding: 0px 18px 0px 18px;
-    margin-top: 100px;
-    text-align: justify;
+    border-right: 2px solid #000000;
+    font-size: 16px;
+    padding: 0px 12px 0px 12px;
+    margin-top: 30px;
     width:20%;
+    text-align: justify;
+	
 }
 li:first-child {
     border-right: none;
@@ -41,29 +42,29 @@ li a:hover {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background-color: #3c50ef;
+    background-color: #0066ff;
 }
 
 .active {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background-color: #ec9713;
+    background-color: #33ccff;
 }
 
 hr {
     display: block;
-    height: 5px;
+    height: 2px;
     width: 102%;
     border: 0;
-    border-top: 3px solid #000000;
+    border-top: 2px solid #000000;
     margin: 0px;
     padding: 0;
 }
 
 hrr {
     display: block;
-    height: 5px;
+    height: 2px;
     border: 0;
     border-top: 3px solid #000000;
     margin: 0px;
@@ -73,16 +74,16 @@ hrr {
 
 .vertical_line{
     height:400px;
-    width:3px;
+    width:2px;
     background:#000;
 }
 
 .spec {
-    font-size: 24px;
+    font-size: 14px;
 }
 
 .bot_bar{
     position: fixed;
     bottom:0px;
-    font-size: 36px;
+    font-size: 20px;
 }

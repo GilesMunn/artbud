@@ -7,38 +7,33 @@
 {% block body_block %}
 <p>
 <div>
-	<img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" />
 	{% if user.is_authenticated %}
 		<h1> Welcome, {{ user.username }}!</h1>
 	{% else %}
 		<h1> Welcome, Anonymous </h1>
 	{% endif %}
 </div>
-<div class="row marketing">
-	<div class="col-lg-6">
+<div>
+	<div>
 	<h4>Most Liked Categories</h4>
 	<p>
 	{% if categories %}
-	<ul class="list-group">
 		{% for category in categories %}
-		<li class="list-group-item"><a href="{% url 'show_category' category.slug %}">
-			{{ category.name }}</a></li class="list-group-item">
+		<a href="{% url 'show_category' category.slug %}">
+			{{ category.name }}</a>
 		{% endfor %}
-	</ul class="list-group">
 	{% else %}
 		<strong>There are no categories present.</strong>
 	{% endif %}
 	</p>
 	</div>
-	<div class="col-lg-6">
+	<div>
 		<h4>Most Viewed Pages</h4>
 		<p>
 		{% if pages %}
-		<ul class="list-group">
 			{% for page in pages %}
-			<li class="list-group-item"><a href="{{ page.url }}">{{ page.title }}</a></li class="list-group-item">
+			<a href="{{ page.url }}">{{ page.title }}</a>
 			{% endfor %}
-			</ul class="list-group">
 		{% else %}
 			<strong>There are no categories present.</strong>
 		{% endif %}

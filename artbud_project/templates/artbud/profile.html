@@ -2,11 +2,11 @@
 {% extends 'artbud/base.html' %}
 
 {% load staticfiles %}
-{% block title %}{{ selecteduser.username }} Profile{% endblock %}
+{% block title %}{{ selecteduser.username }}Profile{% endblock %}
 
 {% block body_block %}
 
-<h1>{{selecteduser.username}} Profile</h1>
+<h1>{{selecteduser.username}}'s Profile</h1>
 <img src="{{ MEDIA_URL }}{{userprofile.picture }}"
 	width="300"
 	height="300"
