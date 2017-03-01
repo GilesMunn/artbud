@@ -1,43 +1,42 @@
 {% extends 'Artbud/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-	Index
+    Homepage
 {% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/homepagecss.css' %}"/>
 
 {% block body_block %}
-<p>
-<div>
-	{% if user.is_authenticated %}
-		<h1> Welcome, {{ user.username }}!</h1>
-	{% else %}
-		<h1> Welcome, Anonymous </h1>
-	{% endif %}
-</div>
-<div>
-	<div>
-	<h4>Most Liked Categories</h4>
-	<p>
-	{% if categories %}
-		{% for category in categories %}
-		<a href="{% url 'show_category' category.slug %}">
-			{{ category.name }}</a>
-		{% endfor %}
-	{% else %}
-		<strong>There are no categories present.</strong>
-	{% endif %}
-	</p>
-	</div>
-	<div>
-		<h4>Most Viewed Pages</h4>
-		<p>
-		{% if pages %}
-			{% for page in pages %}
-			<a href="{{ page.url }}">{{ page.title }}</a>
-			{% endfor %}
-		{% else %}
-			<strong>There are no categories present.</strong>
-		{% endif %}
-		</p>
-	</div>
-</div>
+    <p>
+    <div>
+        {% if user.is_authenticated %}
+            <p align="right" style="vertical-align: top">Welcome, {{ user.username }}!</p>
+        {% endif %}
+    </div>
+    <div>
+        <div>
+            <h4>Most Liked Categories</h4>
+            <p>
+                {% if categories %}
+                    {% for category in categories %}
+                        <a href="{% url 'show_category' category.slug %}">
+                            {{ category.name }}</a>
+                    {% endfor %}
+                {% else %}
+                    <strong>There are no categories present.</strong>
+                {% endif %}
+            </p>
+        </div>
+        <div>
+            <h4>Most Viewed Pages</h4>
+            <p>
+                {% if pages %}
+                    {% for page in pages %}
+                        <a href="{{ page.url }}">{{ page.title }}</a>
+                    {% endfor %}
+                {% else %}
+                    <strong>There are no categories present.</strong>
+                {% endif %}
+            </p>
+        </div>
+    </div>
 {% endblock %}
