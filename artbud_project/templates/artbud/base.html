@@ -22,18 +22,23 @@
         <th>
             <ul>
                 {% if user.is_authenticated %}
+
                     <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
                     </li>
                     <li style="float:right"><a href="{% url 'profile' user.username %}">My Art</a></li>
+                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
+                    <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
 
                 {% else %}
-                    <li style="float:right"><a href="{% url 'auth_login' %}">Login</a>
-                    <li>
+
+                    <li style="float:right"><a href="{% url 'auth_login' %}">Login</a></li>
+
                     <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
+                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
+                    <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
 
                 {% endif %}
-                <li style="float:right"><a href="{% url 'category' %}">Categories</a>
-                <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
+
 
             </ul>
         </th>
