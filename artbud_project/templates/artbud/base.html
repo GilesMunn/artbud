@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-	<title>
+    <title>
         Artbud -
         {% block title_block %}
             Best Place for your Art
@@ -12,25 +12,30 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
 </head>
 
-<link rel="stylesheet" type="text/css" href="{%static 'css/basecss.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/basecss.css' %}"/>
 
 <body>
-<table style="width:10%">
+<table style="width:20%">
     <tr>
-        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;"></th>
+        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;">
+        </th>
         <th>
-        <ul>
-            {% if user.is_authenticated %}
-                <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a></li>
-                <li style="float:right"><a href="{% url 'add_category' %}">Add category</a></li>
-                <li style="float:right"><a href="{% url 'profile' user.username %}">My Art</a></li>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+                    </li>
+                    <li style="float:right"><a href="{% url 'profile' user.username %}">My Art</a></li>
+
+                {% else %}
+                    <li style="float:right"><a href="{% url 'auth_login' %}">Login</a>
+                    <li>
+                    <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
+
+                {% endif %}
+                <li style="float:right"><a href="{% url 'category' %}">Categories</a>
                 <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
-            {% else %}
-                <li style="float:right"><a href="{% url 'auth_login' %}">Login</a><li>
-                <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
-                <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
-            {% endif %}
-        </ul>
+
+            </ul>
         </th>
     </tr>
 
@@ -49,9 +54,9 @@
             <hr/>
             Recent Tweet
 
-            <p class="spec">Tweet from API?            </p>
-            <p class="spec">Maybe latest news or smth  </p>
-            <p class="spec">Count of users with us     </p>
+            <p class="spec">Tweet from API? </p>
+            <p class="spec">Maybe latest news or smth </p>
+            <p class="spec">Count of users with us </p>
 
         </th>
         <th>
@@ -59,15 +64,15 @@
             About us
 
             <p class="spec">We love art and we want to </p>
-            <p class="spec">share this love with the   </p>
-            <p class="spec">world.                     </p>
+            <p class="spec">share this love with the </p>
+            <p class="spec">world. </p>
         </th>
         <th>
             <hr/>
             Contact us
             <p class="spec">Email: artbud@artbud.co.uk </p>
-            <p class="spec">Twitter: Artbud            </p>
-            <p class="spec">Phone:0123213123           </p>
+            <p class="spec">Twitter: Artbud </p>
+            <p class="spec">Phone:0123213123 </p>
 
         </th>
     </tr>
