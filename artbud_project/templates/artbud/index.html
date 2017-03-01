@@ -3,40 +3,45 @@
 {% block title_block %}
     Homepage
 {% endblock %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/homepagecss.css' %}"/>
+
 
 {% block body_block %}
-    <p>
-    <div>
-        {% if user.is_authenticated %}
-            <p align="right" style="vertical-align: top">Welcome, {{ user.username }}!</p>
-        {% endif %}
-    </div>
-    <div>
-        <div>
-            <h4>Most Liked Categories</h4>
-            <p>
-                {% if categories %}
-                    {% for category in categories %}
-                        <a href="{% url 'show_category' category.slug %}">
-                            {{ category.name }}</a>
-                    {% endfor %}
-                {% else %}
-                    <strong>There are no categories present.</strong>
-                {% endif %}
-            </p>
-        </div>
-        <div>
-            <h4>Most Viewed Pages</h4>
-            <p>
-                {% if pages %}
-                    {% for page in pages %}
-                        <a href="{{ page.url }}">{{ page.title }}</a>
-                    {% endfor %}
-                {% else %}
-                    <strong>There are no categories present.</strong>
-                {% endif %}
-            </p>
-        </div>
-    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepagecss.css' %}"/>
+
+
+    {% if user.is_authenticated %}
+        <p align="right" style="vertical-align: top">Welcome, {{ user.username }}!</p>
+    {% endif %}
+
+
+    <img class="round_image" src="{% static "images/homepage_banner.jpg" %}" alt="Artbud Banner"
+         style="width:60%;height:250px;" />
+
+    <p></p>
+    <p></p>
+
+
+        <table style="width: 100%">
+            <tr>
+                <th>
+
+                    <div class="item">
+                        <img id="move_left" class="round_image" src="{% static "images/homepage_banner.jpg" %}"
+                            alt="Artbud Banner2"
+                            style="width:250px;height:250px;float: left;"/>
+                        <p>Newest Art</p>
+                    </div>
+                </th>
+
+                <th>
+                    <div class="item">
+                        <img id="move_left" class="round_image" src="{% static "images/homepage_banner.jpg" %}"
+                            alt="Artbud Banner2"
+                            style="width:250px;height:250px;float: right;"/>
+                        <p>Newest Art</p>
+                    </div>
+
+                </th>
+            </tr>
+        </table>
 {% endblock %}
