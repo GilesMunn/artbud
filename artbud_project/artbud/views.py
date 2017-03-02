@@ -167,6 +167,15 @@ def profile(request, username):
 
 
 
+@login_required
+def list_profiles(request):
+	userprofile_list = UserProfile.objects.all()
+	
+	return render(request, 'artbud/list_profiles.html',
+		{'userprofile_list' : userprofile_list})
+
+
+		
 
 
 
