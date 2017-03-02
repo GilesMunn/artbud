@@ -27,7 +27,13 @@ def about(request):
 	
 	response = render(request, 'artbud/about.html', context_dict)
 	return response
-	
+
+
+def category(request):
+	context_dict = {}
+	response = render(request,'artbud/category.html',context_dict)
+	return response
+
 def add_category(request):
 	form = CategoryForm()
 	if request.method == 'POST':

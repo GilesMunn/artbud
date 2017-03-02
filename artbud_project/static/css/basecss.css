@@ -25,9 +25,13 @@ li {
 	
 }
 li:first-child {
+
     border-right: none;
 }
 
+.bla {
+    margin-top: -30px;
+}
 
 li a {
     display: block;
@@ -62,21 +66,6 @@ hr {
     padding: 0;
 }
 
-hrr {
-    display: block;
-    height: 2px;
-    border: 0;
-    border-top: 3px solid #000000;
-    margin: 0px;
-    padding: 0;
-
-}
-
-.vertical_line{
-    height:400px;
-    width:2px;
-    background:#000;
-}
 
 .spec {
     font-size: 14px;
