@@ -31,7 +31,7 @@ def about(request):
 
 def category(request):
 	context_dict = {}
-	response = render(request,'artbud/category.html',context_dict)
+	response = render(request,'artbud/foundationstest.html',context_dict)
 	return response
 
 def add_category(request):
