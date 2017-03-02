@@ -26,14 +26,11 @@ urlpatterns = [
 		name='add_page'),
 	
 	url(r'^accounts/register/$',MyRegistrationView.as_view(),name='registration_register'),
-	
 	url(r'^accounts/', include('registration.backends.simple.urls')),
-	
 	url(r'^goto/$', views.track_url, name='goto'),
+    url(r'^register_profile/$', views.register_profile, name='register_profile'),
+    url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
+    url(r'^profiles/$', views.list_profiles, name='list_profiles'),
 
-	url(r'^register_profile/$', views.register_profile, name='register_profile'),
-	
-	url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
-	
 ]
 

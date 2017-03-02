@@ -11,6 +11,7 @@
 
     {% if user.is_authenticated %}
         <p align="right" style="vertical-align: top">Welcome, {{ user.username }}!</p>
+		<p align="left" style="vertical-align: top"><a href="{% url 'list_profiles' %}">List Profiles</a>
     {% endif %}
 
 
