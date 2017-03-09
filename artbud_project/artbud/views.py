@@ -152,7 +152,7 @@ def profile(request, username):
 		
 	userprofile = UserProfile.objects.get_or_create(user=user)[0]
 	form = UserProfileForm(
-		{'website': userprofile.website, 'picture': userprofile.picture})
+		{'website': userprofile.website, 'picture': userprofile.picture, 'bio': userprofile.bio})
 	
 	if request.method == 'POST':
 		form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
@@ -175,7 +175,19 @@ def list_profiles(request):
 		{'userprofile_list' : userprofile_list})
 
 
-		
+@login_required
+def like_category(request):
+	cat_id = None
+	if request.method == 'GET':
+		cat_id = request.GET['category_id']
+		likes = 0
+	if cat_id:
+		cat = Category.objects.get(id=int(cat_id))
+		if cat:
+			likes = cat.likes + 1
+			cat.likes = likes
+			cat.save()
+		return HttpResponse(likes)
 
 
 

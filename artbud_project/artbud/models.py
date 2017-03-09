@@ -40,6 +40,7 @@ class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 	website = models.URLField(blank=True)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
+	bio = models.CharField(blank=True, max_length=240)
 
 	def __str__(self):
 		return self.user.username
@@ -50,6 +51,7 @@ class UserProfile(models.Model):
 class UserProfileForm(forms.ModelForm):
 	website = forms.URLField(required=False)
 	picture = forms.ImageField(required=False)
+	bio = forms.CharField(required=False)
 	
 	class Meta: 
 		model = UserProfile

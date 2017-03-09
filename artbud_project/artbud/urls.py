@@ -7,7 +7,6 @@ class MyRegistrationView(RegistrationView):
 	def get_success_url(self, user):
 		return url('register_profile')
 
-app = 'artbud'
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'about/$', views.about, name='about'),
@@ -29,6 +28,7 @@ urlpatterns = [
     url(r'^register_profile/$', views.register_profile, name='register_profile'),
     url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
     url(r'^profiles/$', views.list_profiles, name='list_profiles'),
+	url(r'^like/$', views.like_category, name='like_category'),
 
 ]
 

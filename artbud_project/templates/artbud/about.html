@@ -13,10 +13,12 @@
 		</div>	
 		<p>
 		<p> Visits: {{ visits }}</p>
-		<img src="{{MEDIA_URL}}mona.jpg" alt="Mona Lisa">
+		<button class="btn btn-primary"
+			onClick="alert('This button uses JavaScript.');">
+			JavaScript Test
+		</button>
 	</p>
-	<hr>
-		<button class="btn btn-primary" id="about-btn"> JQuery Alert Example</button>
-	<p>This text is for a Jquery Example - I'll turn red when you hover over me.</p>
-	<div id="msg">Hello - I'm here for a Jquery Example too</div>
+		<img src="{{MEDIA_URL}}mona.jpg" alt="Mona Lisa">
+		
+		
 	{% endblock %}
