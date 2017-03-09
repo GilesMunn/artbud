@@ -101,7 +101,7 @@ pre {
      * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
      */
 a {
-  background-color: transparent;
+  background-color: white;
   /* 1 */
   -webkit-text-decoration-skip: objects;
   /* 2 */ }
@@ -1321,7 +1321,7 @@ h6 {
   h5 small,
   h6 small {
     line-height: 0;
-    color: #cacaca; }
+    color: white; }
 
 h1 {
   font-size: 1.5rem;
@@ -1401,7 +1401,8 @@ dl {
   line-height: 1.6; }
 
 li {
-  font-size: inherit; }
+  font-size: inherit;
+  background-color:white;}
 
 ul {
   margin-left: 1.25rem;
@@ -1426,12 +1427,12 @@ blockquote {
   border-left: 1px solid #cacaca; }
   blockquote, blockquote p {
     line-height: 1.6;
-    color: #8a8a8a; }
+    color: white; }
 
 cite {
   display: block;
   font-size: 0.8125rem;
-  color: #8a8a8a; }
+  color: white; }
   cite:before {
     content: "— "; }
 
@@ -1446,7 +1447,7 @@ figure {
 code {
   padding: 0.125rem 0.3125rem 0.0625rem;
   border: 1px solid #cacaca;
-  background-color: #e6e6e6;
+  background-color: white;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #0a0a0a; }
@@ -1454,7 +1455,7 @@ code {
 kbd {
   margin: 0;
   padding: 0.125rem 0.25rem 0;
-  background-color: #e6e6e6;
+  background-color: white;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   color: #0a0a0a; }
 
@@ -1775,7 +1776,7 @@ textarea::placeholder {
 input:disabled, input[readonly],
 textarea:disabled,
 textarea[readonly] {
-  background-color: #e6e6e6;
+  background-color: white;
   cursor: not-allowed; }
 
 [type='submit'],
@@ -1849,7 +1850,7 @@ label {
 .input-group-label {
   padding: 0 1rem;
   border: 1px solid #cacaca;
-  background: #e6e6e6;
+  background: white;
   color: #0a0a0a;
   text-align: center;
   white-space: nowrap;
@@ -1932,7 +1933,7 @@ select {
     box-shadow: 0 0 5px #cacaca;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
   select:disabled {
-    background-color: #e6e6e6;
+    background-color: white;
     cursor: not-allowed; }
   select::-ms-expand {
     display: none; }
@@ -1980,16 +1981,16 @@ select {
   position: relative;
   display: block;
   padding: 1.25rem 1rem;
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   border-bottom: 0;
   font-size: 0.75rem;
   line-height: 1;
   color: #1779ba; }
   :last-child:not(.is-active) > .accordion-title {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid white;
     border-radius: 0 0 0 0; }
   .accordion-title:hover, .accordion-title:focus {
-    background-color: #e6e6e6; }
+    background-color: white; }
   .accordion-title::before {
     position: absolute;
     top: 50%;
@@ -2002,12 +2003,12 @@ select {
 .accordion-content {
   display: none;
   padding: 1rem;
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   border-bottom: 0;
   background-color: #fefefe;
   color: #0a0a0a; }
   :last-child > .accordion-content:last-child {
-    border-bottom: 1px solid #e6e6e6; }
+    border-bottom: 1px solid white; }
 
 .is-accordion-submenu-parent > a {
   position: relative; }
@@ -2193,7 +2194,7 @@ select {
 
 .card {
   margin-bottom: 1rem;
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   border-radius: 0;
   background: #fefefe;
   box-shadow: none;
@@ -2204,7 +2205,7 @@ select {
 
 .card-divider {
   padding: 1rem;
-  background: #e6e6e6; }
+  background: white; }
   .card-divider > :last-child {
     margin-bottom: 0; }
 
@@ -2366,11 +2367,11 @@ select {
     background: #1779ba;
     color: #fefefe; }
   .menu.menu-bordered li {
-    border: 1px solid #e6e6e6; }
+    border: 1px solid white; }
     .menu.menu-bordered li:not(:first-child) {
       border-top: 0; }
   .menu.menu-hover li:hover {
-    background-color: #e6e6e6; }
+    background-color: white; }
 
 .menu-text {
   padding-top: 0;
@@ -2857,7 +2858,7 @@ select {
   transition: transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: #e6e6e6; }
+  background: white; }
   [data-whatinput='mouse'] .off-canvas {
     outline: 0; }
   .off-canvas.is-transition-overlap {
@@ -2874,7 +2875,7 @@ select {
   transition: transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: #e6e6e6; }
+  background: white; }
   [data-whatinput='mouse'] .off-canvas-absolute {
     outline: 0; }
   .off-canvas-absolute.is-transition-overlap {
@@ -3131,7 +3132,7 @@ select {
     color: #0a0a0a; }
     .pagination a:hover,
     .pagination button:hover {
-      background: #e6e6e6; }
+      background: white; }
   .pagination .current {
     padding: 0.1875rem 0.625rem;
     background: #1779ba;
@@ -3297,7 +3298,7 @@ html.is-reveal-open body {
   height: 0.5rem;
   margin-top: 1.25rem;
   margin-bottom: 2.25rem;
-  background-color: #e6e6e6;
+  background-color: white;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -3575,7 +3576,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs {
   margin: 0;
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   background: #fefefe;
   list-style-type: none; }
   .tabs::before, .tabs::after {
@@ -3613,18 +3614,18 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
       background: #fefefe;
       color: #1468a0; }
     .tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
-      background: #e6e6e6;
+      background: white;
       color: #1779ba; }
 
 .tabs-content {
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   border-top: 0;
   background: #fefefe;
   color: #0a0a0a;
   transition: all 0.5s ease; }
 
 .tabs-content.vertical {
-  border: 1px solid #e6e6e6;
+  border: 1px solid white;
   border-left: 0; }
 
 .tabs-panel {
@@ -3755,7 +3756,7 @@ a.thumbnail {
     clear: both; }
   .top-bar,
   .top-bar ul {
-    background-color: #e6e6e6; }
+    background-color: white; }
   .top-bar input {
     max-width: 200px;
     margin-right: 1rem; }

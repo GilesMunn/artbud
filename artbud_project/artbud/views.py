@@ -7,6 +7,7 @@ from artbud.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from registration.backends.simple.views import RegistrationView
 
 def index(request):
 	page_list = Page.objects.order_by('-views')[:5]
@@ -125,22 +126,25 @@ def track_url(request):
 	
 @login_required
 def register_profile(request):
-	form = UserProfileForm()
-	
-	if request.method == 'POST':
-		form = UserProfileForm(request.POST, request.FILES)
-		if form.is_valid():
-			user_profile = form.save(commit=False)
-			user_profile.user = request.user
-			user_profile.save()
-			
-			return redirect('index')
-		else:
-			print(form.errors)
-			
-	context_dict = {'form':form}
+    form = UserProfileForm()
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user
+            user_profile.save()
+            
+            return redirect('index')
+        else:
+            print(form.errors)
 
-	return render(request, 'artbud/profile_registration.html', context_dict)
+    context_dict = {'form':form}
+    
+    return render(request, 'artbud/profile_registration.html', context_dict)
+
+class artbudRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return reverse('register_profile')
 
 	
 @login_required

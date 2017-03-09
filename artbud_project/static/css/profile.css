@@ -1,4 +1,7 @@
 
+label,textarea{ display:inline-block; vertical-align:middle; }
+
+
 .form-signin {
   max-width: 330px;
   padding: 5px;

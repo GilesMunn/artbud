@@ -1,5 +1,13 @@
-{% extends "artbud/base.html" %}
-{% block body_block %}
-	<h1>Registration Complete</h1>
-	<p>You are now registered</p>
-{% endblock %}
+
+	{% extends "artbud/base.html" %}
+	
+	{% block title_block %}
+		Registration Complete
+	{% endblock %}
+	
+	{% block body_block %}
+		<h1>Registration Complete</h1>
+		<p>You are now registered, redirecting to homepage.</p>
+		
+		<meta http-equiv="refresh" content="3;{% url 'index' %}" />
+	{% endblock %}

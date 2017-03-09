@@ -46,14 +46,14 @@ li a:hover {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background-color: #0066ff;
+    background-color: #0099ff;
 }
 
 .active {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    background-color: #ee7b1f;
+    background-color: #ffa41c;
 }
 
 hr {

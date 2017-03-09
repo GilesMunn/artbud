@@ -8,8 +8,40 @@
 
 
 <link rel="stylesheet" type="text/css" href="{%static 'css/profile.css' %}" />
+<table style="width:20%">
+    <tr>
+        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;">
+        </th>
+        <th>
+            <ul>
+                {% if user.is_authenticated %}
+					{% if selecteduser.username == user.username %}
+                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
+                    <li style="float:right"><a class="active" href="{% url 'profile' user.username %}">Profile</a></li>
+                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
+                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
+					{% else %}
+					<li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
+                    <li style="float:right"><a href="{% url 'profile' user.username %}">Profile</a></li>
+                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
+                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
+					{% endif %}
+                {% else %}
 
-<h1 class="display-3">{{selecteduser.username}}'s Profile</h1>
+                    <li style="float:right"><a href="{% url 'auth_login' %}">Sign In</a></li>
+                    <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
+                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
+                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
+
+                {% endif %}
+
+            </ul>
+        </th>
+    </tr>
+	</table>
+	<hr/>
+<h1 class="display-3"><center>{{selecteduser.username}}'s Profile</center></h1>
+
 
 <div id='centred'>
 {% if userprofile.picture %}
@@ -18,7 +50,7 @@
 	height="250"
 	alt="{{selecteduser.username}}" />
 {% else %}
-<img src="https://tinyurl.com/hea49k5" img width="300" height="300" alt="{{user.username}}"/>
+<img src="https://tinyurl.com/hea49k5" img width="250" height="250" alt="{{user.username}}"/>
 {% endif %}
 </div>
 
@@ -28,23 +60,28 @@
 	
 		<form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
 			{% csrf_token %}
-			
+			<p>
 			<label for="id_websiteebsite" class="sr-only">Website: </label>
-			<input style="font-family:Century Gothic, sans-serif" type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
+			<input "style="font-family:Century Gothic, sans-serif" type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
 			
 			<p>
 			
-			<label for="id_bio" style="padding-right:8px">Bio: </label>
+			<label for="id_bio" style="padding-right:38px">Bio: </label>
 			<textarea style="font-family:Century Gothic, sans-serif" id="id_bio" class="form-control" name="bio" placeholder="Describe yourself here..." ></textarea>
 			<!--<textarea type="text" id="id_bio" class="form-control" name="Bio" placeholder="About you..." style="font-size:12pt;height:100px;width:250px;">-->
 			
 			<p>
 			
 			<label for="id_picture" style="padding-right:17px">Picture: </label>
-			<input type="file" id="id_picture" name="Picture" placeholder="Picture" style="color:transparent">
+			<input type="file" id="id_picture" name="Picture" placeholder="Picture" ><!--style="color:transparent"-->
 			
 			<p>
 			
+			<label for="id_artwork" style="padding-right:10px">Artwork: </label>
+			<input type="file" id="id_artwork" name="Artwork" placeholder="Artwork" ><!--style="color:transparent"-->
+			
+			<p>
+						
 		   <button class="btn btn-lg btn-primary btn-block" type="submit" value="Update" />Submit</button>
 		</form>		
 		
