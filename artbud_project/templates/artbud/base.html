@@ -5,9 +5,8 @@
 <html lang="en">
 <head>
     <title>
-        Artbud -
         {% block title_block %}
-            Best Place
+        Artbud
         {% endblock %}
     </title>
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
@@ -24,14 +23,14 @@
             <ul>
                 {% if user.is_authenticated %}
 
-                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Logout</a></li>
+                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
                     <li style="float:right"><a href="{% url 'profile' user.username %}">My Art</a></li>
                     <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
                     <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
 
                 {% else %}
 
-                    <li style="float:right"><a href="{% url 'auth_login' %}">Login</a></li>
+                    <li style="float:right"><a href="{% url 'auth_login' %}">Sign In</a></li>
                     <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
                     <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
                     <li style="float:right"><a class="active" href="{% url 'index' %}">Home</a></li>
@@ -68,14 +67,14 @@
 
             <p class="spec">We love art and we want to </p>
             <p class="spec">share this love with the </p>
-            <p class="spec">world. </p>
+            <p class="spec">whole World. </p>
         </th>
         <th>
             <hr/>
             Contact us
             <p class="spec">Email: artbud@artbud.co.uk </p>
-            <p class="spec">Twitter: Artbud </p>
-            <p class="spec">Phone:0123213123 </p>
+            <p class="spec">Twitter: @Artbud </p>
+            <p class="spec">Phone: 01232 613123 </p>
 
         </th>
     </tr>

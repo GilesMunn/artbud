@@ -41,6 +41,7 @@ class UserProfile(models.Model):
 	website = models.URLField(blank=True)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	bio = models.CharField(blank=True, max_length=240)
+	artwork = models.ImageField(upload_to='artwork_images', blank=True)
 
 	def __str__(self):
 		return self.user.username
@@ -52,6 +53,7 @@ class UserProfileForm(forms.ModelForm):
 	website = forms.URLField(required=False)
 	picture = forms.ImageField(required=False)
 	bio = forms.CharField(required=False)
+	artwork = forms.ImageField(required=False)
 	
 	class Meta: 
 		model = UserProfile
