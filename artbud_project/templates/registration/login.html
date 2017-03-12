@@ -1,60 +1,50 @@
-	{% extends "artbud/base.html" %}
-	{% load staticfiles %}
-	
-	{% block title_block %}
-		Sign In
-	{% endblock %}
-	
-	{% block body_block %}
-	
-	<table style="width:20%">
-    <tr>
-        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;">
-        </th>
-        <th>
-            <ul>
-                {% if user.is_authenticated %}
+{% extends "artbud/base.html" %}
+{% load staticfiles %}
 
-                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
-                    <li style="float:right"><a href="{% url 'profile' user.username %}">Profile</a></li>
-                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
-                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
+{% block title_block %}
+    Sign In
+{% endblock %}
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endblock %}
 
-                {% else %}
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="active"><a href="{% url 'auth_login' %}">Login</a></li>
+{% endblock %}
 
-                    <li style="float:right"><a class="active" href="{% url 'auth_login' %}">Sign In</a></li>
-                    <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
-                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
-                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
 
-                {% endif %}
+{% block body_block %}
+    <div class="large-8 large-centered columns">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <p>
+    <div>
+        <h1 class="display-3">Sign In</h1>
+    </div>
 
-            </ul>
-        </th>
-    </tr>
-	</table>
-	<hr/>
-	
-	<link rel="stylesheet" type="text/css" href="{%static 'css/login.css' %}" />
-<p>
-	<div>
-		<h1 class="display-3">Sign In</h1>
- 	</div>
+    <form class="form-signin" role="form" method="post" action=".">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Please sign in</h2>
 
-	<form class="form-signin" role="form" method="post" action=".">
-		{% csrf_token %}
-		<h2 class="form-signin-heading">Please sign in</h2>
-		
-		<label for="inputUsername" class="sr-only">Username</label>
-		<input style="font-family:Century Gothic, sans-serif" type="text" id="id_username" class="form-control" name="username" placeholder="JohnSmith" required autofocus>
-		
-		<label for="inputPassword" class="sr-only" style='padding-right:5px'>Password </label>
-		<input style="font-family:Century Gothic, sans-serif" type="password" id="id_password" class="form-control" name="password" placeholder="password1234">
-		
-		<button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Sign in</button>
-		<input type="hidden" name="next" value="{{ next }}" />
-		
-	</form>
-	
-	<p>Not a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
-	{% endblock %}
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input style="font-family:Century Gothic, sans-serif" type="text" id="id_username" class="form-control"
+               name="username" placeholder="JohnSmith" required autofocus>
+
+        <label for="inputPassword" class="sr-only" style='padding-right:5px'>Password </label>
+        <input style="font-family:Century Gothic, sans-serif" type="password" id="id_password" class="form-control"
+               name="password" placeholder="password1234">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit"/>
+        Sign in</button>
+        <input type="hidden" name="next" value="{{ next }}"/>
+
+    </form>
+
+    <p>Not a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
+    </div>
+{% endblock %}
