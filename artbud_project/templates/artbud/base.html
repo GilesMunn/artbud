@@ -1,60 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load staticfiles %}
 
-
-<html lang="en">
+<html class="no-js" lang="en" dir="ltr">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
     <title>
         {% block title_block %}
-        Artbud
+            Artbud
         {% endblock %}
     </title>
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
 </head>
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/basecss.css' %}"/>
-
 <body>
 
+<!--HEADER -->
 
+
+{% if user.is_authenticated %}
+    <div class="row">
+        <div class="large-3 columns">
+            <img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:200px;height:110px;">
+        </div>
+        <div class="large-9 columns">
+            <div class="top-bar" style="background:white">
+                <div class="top-bar-right">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        {% block table_auth %}
+                            <!--<li class="step"><a href="#">Home</a></li>
+                            <li class="active"><a href="#">Categories</a></li>
+                            <li class="step"><a href="#">My Art</a></li>
+                            <li class="step"><a href="#">Logout</a></li>-->
+                        {% endblock %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% else %}
+    <div class="row">
+        <div class="large-3 columns">
+            <img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:200px;height:110px;">
+        </div>
+        <div class="large-9 columns">
+            <div class="top-bar" style="background:white">
+                <div class="top-bar-right">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        {% block table_notauth %}
+                            <!--<li class="step"><a href="#">Home</a></li>
+                            <li class="active"><a href="#">Categories</a></li>
+                            <li class="step"><a href="#">Register</a></li>
+                            <li class="step"><a href="#">Login</a></li>-->
+                        {% endblock %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endif %}
 {% block body_block %}
 {% endblock %}
 
 
+<!-- Footer -->
+<div id="footer">
+    <footer class="footer">
 
-<table class="bot_bar" style="width: 100%">
-    <tr>
-        <th>
-            <hr/>
-            Recent Tweet
+        <div class="row full-width">
 
-            <p class="spec">Tweet from API? </p>
-            <p class="spec">Maybe latest news or smth </p>
-            <p class="spec">Count of users with us </p>
+            <div class="small-12 medium-4 large-4 columns">
 
-        </th>
-        <th>
-            <hr/>
-           <a href="{% url 'about' %}">About Us</a></li>
+                <h4>Recent Tweets</h4>
 
-            <p class="spec">We love art and we want to </p>
-            <p class="spec">share this love with the </p>
-            <p class="spec">whole World. </p>
-        </th>
-        <th>
-            <hr/>
-            Contact us
-            <p class="spec">Email: artbud@artbud.co.uk </p>
-            <p class="spec">Twitter: @Artbud </p>
-            <p class="spec">Phone: 01232 613123 </p>
+                <p>Tweet from API? Maybe latest news or smth. Count of users with us </p>
 
-        </th>
-    </tr>
+            </div>
 
-</table>
+            <div class="small-12 medium-4 large-4 columns">
 
-    <script src="{% static 'js/artbud-ajax.js' %}"></script>
-    <script src="{% static 'js/artbud-jquery.js' %}"></script>
+                <a href="{% url 'about' %}"><h4>About Us</h4></a>
 
-<body/>
-<html/>
+                <p>We love art and we want to share this love with the whole World. </p>
+
+            </div>
+
+            <div class="small-12 medium-4 large-4 columns">
+
+                <h4>Contact us</h4>
+                <p>Email: artbud@artbud.co.uk<br>
+                    Phone: 01232 613123 </p>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+</div>
+<script src="{% static 'js/vendor/jquery.js' %}"></script>
+<script src="{% static 'js/vendor/what-input.js' %}"></script>
+<script src="{% static 'js/vendor/sticky-footer.js' %}"></script>
+<script src="{% static 'js/vendor/foundation.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
