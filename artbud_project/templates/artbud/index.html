@@ -17,37 +17,39 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="large-8 large-centered columns">
-    {% if user.is_authenticated %}
-        <p align="right" style="vertical-align: top">Welcome, {{ user.username }}! 	• <a href="{% url 'list_profiles' %}">Artists</a></p>
-    {% endif %}
+    <div class="row">
+    <div class="large-10 large-centered columns text-center">
+        {% if user.is_authenticated %}
+            <p align="right" style="vertical-align: top">Welcome, {{ user.username }}! • <a
+                    href="{% url 'list_profiles' %}">Artists</a></p>
+        {% endif %}
 
-<p>
-    <img class="round_image" src="{% static "images/homepage_banner.jpg" %}" alt="Artbud Banner"
-         style="width:60%;height:250px;" />
-
-        <table style="width: 100%">
-            <tr>
-                <th>
-
-                    <div class="item">
-                        <img id="move_left" class="round_image" src="{% static "images/artwork_1.jpg" %}"
-                            alt="Artbud Banner2"
-                            style="width:250px;height:250px;float: left;margin-bottom:8px""/>
-                        <p>Newest Art</p>
-                    </div>
-                </th>
-
-                <th>
-                    <div class="item">
-                        <img id="move_left" class="round_image" src="{% static "images/artwork_2.jpg" %}"
-                            alt="Artbud Banner2"
-                            style="width:250px;height:250px;float: right;margin-bottom:8px"/>
-                        <p>Highest rated</p>
-                    </div>
-
-                </th>
-            </tr>
-        </table>
+        <p></p>
+        <img class="curv_image" src="{% static "images/homepage_banner.jpg" %}" alt="Artbud Banner"
+             style="border-radius: 25px;"/>
     </div>
+    </div>
+    <p></p>
+    <div class="row column">
+    <p></p>
+    </div>
+
+    <div class="row">
+        <div class="medium-6 columns text-center">
+
+            <img class="round_image" src="{% static "images/artwork_1.jpg" %}"/>
+            <p></p>
+            <p><h2>Best Rated</h2></p>
+
+        </div>
+        <div class="medium-6 columns text-center">
+
+            <img class="round_image" src="{% static "images/artwork_2.jpg" %}"/>
+            <p></p>
+                <p><h2>Newest Art</h2></p>
+
+        </div>
+
+    </div>
+
 {% endblock %}
