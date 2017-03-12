@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-	Categories
+    Categories
 {% endblock %}
 {% block table_auth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
@@ -18,6 +18,61 @@
     <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 {% block body_block %}
+
+    <div class="row">
+
+
+        <div class="medium-6 columns text-center">
+
+            <img class="round_image" src="{% static "images/painting.jpg" %}"/>
+            <p></p>
+            <p>
+            <h2>Painting</h2></p>
+
+        </div>
+
+        <div class="medium-6 columns text-center">
+
+            <img class="round_image" src="{% static "images/photography.jpg" %}"/>
+            <p></p>
+            <p>
+            <h2>Photography</h2></p>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="medium-4 columns text-center">
+
+            <img class="round_image" src="{% static "images/sculpture.jpg" %}"/>
+            <p></p>
+            <p>
+            <h2>Sculpture</h2></p>
+
+        </div>
+        <div class="medium-4 columns text-center">
+
+            <img class="round_image" src="{% static "images/drawing.jpg" %}"/>
+            <p></p>
+            <p>
+            <h2>Drawing</h2></p>
+
+        </div>
+        <div class="medium-4 columns text-center">
+
+            <img class="round_image" src="{% static "images/other.jpg" %}"/>
+            <p></p>
+            <p>
+            <h2>Other</h2></p>
+
+        </div>
+
+    </div>
+
+
+    {% comment %}
 	{% if category %}
 		<h1>{{category.name}}</h1>
 		
@@ -57,4 +112,5 @@
 	{% else %}
 		The specified category does not exist!
 	{% endif %}
+{% endcomment %}
 {% endblock %}
