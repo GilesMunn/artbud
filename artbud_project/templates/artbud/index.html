@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block body_block %}
-
+<div class="large-8 large-centered columns">
     {% if user.is_authenticated %}
         <p align="right" style="vertical-align: top">Welcome, {{ user.username }}! 	• <a href="{% url 'list_profiles' %}">Artists</a></p>
     {% endif %}
@@ -49,4 +49,5 @@
                 </th>
             </tr>
         </table>
+    </div>
 {% endblock %}

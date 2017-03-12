@@ -1,6 +1,8 @@
 {% extends "artbud/base.html" %}
 {% load staticfiles %}
-
+{% block title_block %}
+	Register
+{% endblock %}
 {% block table_auth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
     <li class="step"><a href="{% url 'category' %}">Categories</a></li>
