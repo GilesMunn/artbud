@@ -4,42 +4,28 @@
 {% load staticfiles %}
 {% block title %}{{ selecteduser.username }}Profile{% endblock %}
 {% block title_block %}{{ selecteduser.username }}{% endblock %}
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endblock %}
+
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% endblock %}
 {% block body_block %}
 
 
+
 <link rel="stylesheet" type="text/css" href="{%static 'css/profile.css' %}" />
-<table style="width:20%">
-    <tr>
-        <th><img src="{% static "images/logo.jpg" %}" alt="Artbud Logo" style="width:180px;height:100px;">
-        </th>
-        <th>
-            <ul>
-                {% if user.is_authenticated %}
-					{% if selecteduser.username == user.username %}
-                    <li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
-                    <li style="float:right"><a class="active" href="{% url 'profile' user.username %}">Profile</a></li>
-                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
-                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
-					{% else %}
-					<li style="float:right"><a class="nav-link" href="{% url 'auth_logout' %}?next=/artbud/">Sign Out</a></li>
-                    <li style="float:right"><a href="{% url 'profile' user.username %}">Profile</a></li>
-                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
-                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
-					{% endif %}
-                {% else %}
 
-                    <li style="float:right"><a href="{% url 'auth_login' %}">Sign In</a></li>
-                    <li style="float:right"><a href="{% url 'registration_register' %}">Register</a></li>
-                    <li style="float:right"><a href="{% url 'category' %}">Categories</a></li>
-                    <li style="float:right"><a href="{% url 'index' %}">Home</a></li>
 
-                {% endif %}
 
-            </ul>
-        </th>
-    </tr>
-	</table>
-	<hr/>
+<div class="row">
 <h1 class="display-3"><center>{{selecteduser.username}}'s Profile</center></h1>
 
 
@@ -93,5 +79,5 @@
 	{% endif %}
 </div>
 <div id="edit_profile"></div>
-
+</div>
 {% endblock %}

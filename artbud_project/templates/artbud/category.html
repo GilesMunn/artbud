@@ -21,10 +21,11 @@
 
     <div class="row">
 
-
         <div class="medium-6 columns text-center">
 
-            <img class="round_image" src="{% static "images/painting.jpg" %}"/>
+			<a href="{% url 'add_category' %}">
+            <img class="round_image" src="{% static 'images/painting.jpg' %}"/>
+			</a>
             <p></p>
             <p>
             <h2>Painting</h2></p>
@@ -33,7 +34,9 @@
 
         <div class="medium-6 columns text-center">
 
-            <img class="round_image" src="{% static "images/photography.jpg" %}"/>
+            <a href="{% url 'category' %}">
+			<img class="round_image" src="{% static 'images/photography.jpg' %}"/>
+			</a>
             <p></p>
             <p>
             <h2>Photography</h2></p>
@@ -46,7 +49,9 @@
     <div class="row">
         <div class="medium-4 columns text-center">
 
-            <img class="round_image" src="{% static "images/sculpture.jpg" %}"/>
+			<a href="{% url 'category' %}">
+            <img class="round_image" src="{% static 'images/sculpture.jpg' %}"/>
+			</a>
             <p></p>
             <p>
             <h2>Sculpture</h2></p>
@@ -54,7 +59,9 @@
         </div>
         <div class="medium-4 columns text-center">
 
-            <img class="round_image" src="{% static "images/drawing.jpg" %}"/>
+			<a href="{% url 'category' %}">
+            <img class="round_image" src="{% static 'images/drawing.jpg' %}"/>
+			<a>
             <p></p>
             <p>
             <h2>Drawing</h2></p>
@@ -62,7 +69,9 @@
         </div>
         <div class="medium-4 columns text-center">
 
-            <img class="round_image" src="{% static "images/other.jpg" %}"/>
+			<a href="{% url 'category' %}">
+            <img class="round_image" src="{% static 'images/other.jpg' %}"/>
+			</a>
             <p></p>
             <p>
             <h2>Other</h2></p>

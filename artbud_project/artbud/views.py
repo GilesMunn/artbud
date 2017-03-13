@@ -21,15 +21,6 @@ def index(request):
 	return response
 
 
-def about(request):
-	context_dict = {}
-	context_dict['visits'] = request.session['visits']
-	visitor_cookie_handler(request)	
-	
-	response = render(request, 'artbud/about.html', context_dict)
-	return response
-
-
 def category(request):
 	context_dict = {}
 	response = render(request,'artbud/category.html',context_dict)
