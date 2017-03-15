@@ -34,12 +34,13 @@ class PageForm(forms.ModelForm):
 			
 class UserForm(forms.ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput())
-
 	class Meta:
 		model = User
 		fields = ('username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
+	file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 	class Meta:
 		model = UserProfile
-		fields = ('website', 'bio','picture')
+		fields = ('website', 'bio','picture','artwork')
+		

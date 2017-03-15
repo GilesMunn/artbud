@@ -24,6 +24,13 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
+
+FILE_UPLOAD_HANDLERS = [
+    'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
