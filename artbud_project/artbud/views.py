@@ -26,6 +26,7 @@ def category(request):
 	response = render(request,'artbud/category.html',context_dict)
 	return response
 
+@login_required
 def add_category(request):
 	form = CategoryForm()
 	if request.method == 'POST':

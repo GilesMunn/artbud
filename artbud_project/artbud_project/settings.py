@@ -116,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = '/accounts/login/'
 
 # If True, users can register
 REGISTRATION_OPEN = True
@@ -128,7 +127,7 @@ REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/artbud/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/artbud/accounts/login/'
 
 
 # Internationalization
