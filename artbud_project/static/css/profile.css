@@ -47,11 +47,25 @@ label,textarea{ display:inline-block; vertical-align:middle; }
   
 }
 
-#centred {
-    max-width: 100px;
-	margin:5px;
-    left: 1%;
-	right:1%;
-    position: absolute;
-	
+ .button_submit {
+    background-color: white;
+    border: 2px solid #008CBA ;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+}
+
+.button_submit:hover {
+    background-color: #008CBA;
+    color: white;
 }
