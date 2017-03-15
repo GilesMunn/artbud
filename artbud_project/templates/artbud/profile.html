@@ -50,26 +50,22 @@
 			<form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
 				{% csrf_token %}
 					<p>
-					<label style="font-family:Century Gothic, sans-serif" for="id_websiteebsite" class="sr-only">Website: {{userprofile.website}}</label>
-					<input style="font-family:Century Gothic, sans-serif" type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
+					<label for="id_websiteebsite" class="sr-only">Website: {{userprofile.website}}</label>
+					<input type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
 
 					<p>
-					
-					<label style="font-family:Century Gothic, sans-serif"  for="id_bio" style="padding-right:38px">Bio: {{userprofile.bio}}</label>
-					<textarea style="font-family:Century Gothic, sans-serif";"height:200px" id="id_bio" class="form-control" name="bio" placeholder="Describe yourself here..." ></textarea>
+					<label for="id_bio" style="padding-right:38px">Bio: {{userprofile.bio}}</label>
+					<textarea style="max-height:200px" id="id_bio" class="form-control" name="bio" placeholder="Describe yourself here..." ></textarea>
 					
 					<p>
-					
-					<label style="font-family:Century Gothic, sans-serif"  for="id_picture" style="padding-right:17px">Profile Picture: </label>
+					<label for="id_picture" style="padding-right:17px">Profile Picture: </label>
 					<input type="file" id="id_picture" name="picture">
 					
 					<p>
-					
-					<label style="font-family:Century Gothic, sans-serif"  for="id_artwork" style="padding-right:10px">Artwork: </label>
+					<label for="id_artwork" style="padding-right:10px">Artwork: </label>
 					<input type="file" id="id_artwork" name="artwork">
 					
 					<p>
-
 					<button class="button_submit" type="submit" value="Update"/>Update</button>
 					</form>
                         {% else %}
