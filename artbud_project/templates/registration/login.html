@@ -4,11 +4,12 @@
 {% block title_block %}
     Sign In
 {% endblock %}
+
 {% block table_auth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
     <li class="step"><a href="{% url 'category' %}">Categories</a></li>
     <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a></li>
 {% endblock %}
 
 {% block table_notauth %}
@@ -21,8 +22,7 @@
 
 {% block body_block %}
     <div class="row">
-    <div class="large-8 large-centered columns">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <div class="large-4 large-centered columns">
     <p>
     <div>
         <h1 class="display-3">Sign In</h1>
@@ -34,12 +34,11 @@
 
         <label for="inputUsername" class="sr-only">Username</label>
         <input style="font-family:Century Gothic, sans-serif" type="text" id="id_username" class="form-control"
-               name="username" placeholder="JohnSmith" required autofocus>
+               name="username" placeholder="JohnSmith">
 
         <label for="inputPassword" class="sr-only" style='padding-right:5px'>Password </label>
         <input style="font-family:Century Gothic, sans-serif" type="password" id="id_password" class="form-control"
                name="password" placeholder="password1234">
-<!-- btn btn-lg btn-primary btn-block-->
         <button class="button_submit" type="submit" value="Submit">
         Sign in</button>
         <input type="hidden" name="next" value="{{ next }}"/>
