@@ -26,6 +26,7 @@ def category(request):
 	response = render(request,'artbud/category.html',context_dict)
 	return response
 
+	
 @login_required
 def add_category(request):
 	form = CategoryForm()
@@ -38,6 +39,7 @@ def add_category(request):
 		print(form.errors)
 
 	return render(request, 'artbud/add_category.html', {'form': form})	
+	
 	
 def show_category(request, category_name_slug):
 	context_dict = {}
@@ -52,6 +54,7 @@ def show_category(request, category_name_slug):
 		context_dict['pages'] = None
 		
 	return render(request, 'artbud/category.html', context_dict)
+	
 	
 def add_page(request, category_name_slug):
 	try:
@@ -74,6 +77,7 @@ def add_page(request, category_name_slug):
 			
 	context_dict = {'form':form, 'category': category}
 	return render(request, 'artbud/add_page.html', context_dict)
+	
 	
 def get_server_side_cookie(request, cookie, default_val=None):
 	val = request.session.get(cookie)
@@ -99,6 +103,7 @@ def visitor_cookie_handler(request):
 		request.session['last_visit'] = last_visit_cookie
 		request.session['visits'] = visits
 		
+		
 def track_url(request):
 	page_id = None
 	url = '/artbud/'
@@ -115,6 +120,7 @@ def track_url(request):
 				pass
 				
 	return redirect(url)
+	
 	
 @login_required
 def register_profile(request):
@@ -137,7 +143,7 @@ def register_profile(request):
 class artbudRegistrationView(RegistrationView):
     def get_success_url(self, user):
         return reverse('register_profile')
-
+	
 	
 def profile(request, username):
 	try:
@@ -159,7 +165,6 @@ def profile(request, username):
 			
 	return render(request, 'artbud/profile.html',
 		{'userprofile': userprofile, 'selecteduser': user, 'form': form})
-
 
 
 def list_profiles(request):
