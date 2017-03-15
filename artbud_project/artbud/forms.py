@@ -39,8 +39,8 @@ class UserForm(forms.ModelForm):
 		fields = ('username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
-	file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+	#file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 	class Meta:
 		model = UserProfile
-		fields = ('website', 'bio','picture','artwork')
+		fields = ('website', 'bio','picture',)#'artwork')
 		
