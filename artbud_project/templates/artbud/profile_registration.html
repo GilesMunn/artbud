@@ -1,10 +1,8 @@
 {% extends 'artbud/base.html' %}
 
-{% block title_block %}
-	Registration - Step 2
-{% endblock %}
+{% block title_block %}Registration - Step 2{% endblock %}
 
-{% block body_block %}
+{% block bodyblock %}
 	<h1>Registration - Step 2</h1>
 	<form method="post" action="." enctype="multipart/form-data">
 		{% csrf_token %}

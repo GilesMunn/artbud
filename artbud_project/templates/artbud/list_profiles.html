@@ -1,31 +1,25 @@
 {% extends 'artbud/base.html' %}
-
 {% load staticfiles %}
 
 {% block title_block %}Artists{% endblock %}
-{% block title %}Artists{% endblock %}
 
-{% block table_auth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% block table_auth %}	
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endblock %}
+{% block table_notauth %}	
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
-{% block table_notauth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
-{% endblock %}
-{% block body_block %}
 
-
-
+{% block bodyblock %}
 <div class="row">
-
 <h1>Artists</h1>
-
 <div class="panel">
 	{% if userprofile_list %}
 	<div class="panel-heading">
@@ -42,9 +36,6 @@
 					<h4 class="list-group-item-heading">
 						<a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
 					</h4>
-
-
-
 				</div>
 				{% endfor %}
 			</div>
@@ -53,6 +44,7 @@
 	{% else %}
 		<p>There are no users for the site.</p>
 	{% endif %}
+	</div>
 </div>
-</div>
+
 {% endblock %}

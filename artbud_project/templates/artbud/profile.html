@@ -1,28 +1,31 @@
 {% extends 'artbud/base.html' %}
-
 {% load staticfiles %}
-{% block title %}{{ selecteduser.username }}Profile{% endblock %}
+
 {% block title_block %}{{ selecteduser.username }}{% endblock %}
-{% block table_auth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+
+{% block table_auth %}	
+{% if selecteduser.username == user.username %}
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% else %} 
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endif %}
+{% endblock %}
+{% block table_notauth %}	
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
-{% block table_notauth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
-{% endblock %}
-{% block body_block %}
 
-
+{% block bodyblock %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
-
-
-
     <div class="row">
         <div class="large-12 columns text-center">
             <h1 class="display-3">
@@ -30,7 +33,6 @@
             </h1>
         </div>
     </div>
-
     <div class="row">
     <div class="medium-3 columns text-right">
             {% if userprofile.picture %}
@@ -41,13 +43,10 @@
             {% else %}
                 <img src="https://tinyurl.com/hea49k5" img width="250px" height="250px" alt="{{ user.username }}"/>
             {% endif %}
-
     </div>
     <div class="medium-9 columns">
         <p>
-
                 {% if selecteduser.username == user.username %}
-
 			<form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
 				{% csrf_token %}
 					<p>
@@ -73,9 +72,7 @@
 
 					<button class="button_submit" type="submit" value="Update"/>Update</button>
 					</form>
-
                         {% else %}
-
                     <p style="padding-left:300px"><strong>Website:</strong> <a href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                     <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
                     <p style="padding-left:300px"><strong>Artwork:</strong> {{ userprofile.artwork }}</p>
@@ -84,4 +81,5 @@
     <div id="edit_profile"></div>
     </div>
 
+	
 {% endblock %}

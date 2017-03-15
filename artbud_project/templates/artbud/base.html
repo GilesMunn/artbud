@@ -17,9 +17,7 @@
 </head>
 <body>
 
-<!--HEADER -->
-
-
+<!--Header-->
 {% if user.is_authenticated %}
     <div class="row">
         <div class="large-3 columns">
@@ -29,16 +27,11 @@
             <div class="top-bar" style="background:white">
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
-                        {% block table_auth %}
-                            <!--<li class="step"><a href="#">Home</a></li>
-                            <li class="active"><a href="#">Categories</a></li>
-                            <li class="step"><a href="#">My Art</a></li>
-                            <li class="step"><a href="#">Logout</a></li>-->
+                        {% block table_auth %}					
                         {% endblock %}
                     </ul>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -51,21 +44,18 @@
             <div class="top-bar" style="background:white">
                 <div class="top-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
-                        {% block table_notauth %}
-                            <!--<li class="step"><a href="#">Home</a></li>
-                            <li class="active"><a href="#">Categories</a></li>
-                            <li class="step"><a href="#">Register</a></li>
-                            <li class="step"><a href="#">Login</a></li>-->
+                        {% block table_notauth %}					
                         {% endblock %}
                     </ul>
                 </div>
             </div>
 
         </div>
-
     </div>
+
 {% endif %}
-{% block body_block %}
+
+{% block bodyblock %}
 {% endblock %}
 
 
@@ -96,12 +86,8 @@
                 <h4>Contact us</h4>
                 <p>Email: artbud@artbud.co.uk<br>
                     Phone: 01232 613123 </p>
-
             </div>
-
-
         </div>
-
     </footer>
 </div>
 <script src="{% static 'js/vendor/jquery.js' %}"></script>

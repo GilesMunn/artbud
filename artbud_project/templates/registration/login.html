@@ -1,33 +1,24 @@
 {% extends "artbud/base.html" %}
 {% load staticfiles %}
 
-{% block title_block %}
-    Sign In
-{% endblock %}
+{% block title_block %}Sign In{% endblock %}
 
-{% block table_auth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a></li>
-{% endblock %}
-
-{% block table_notauth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
-    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-    <li class="active"><a href="{% url 'auth_login' %}">Login</a></li>
+{% block table_notauth %}	
+<li class="step"><a href="{% url 'index' %}">Home</a></li>
+<li class="step"><a href="{% url 'category' %}">Categories</a></li>
+<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+<li class="active"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 
-{% block body_block %}
+{% block bodyblock %}
     <div class="row">
     <div class="large-4 large-centered columns">
     <p>
     <div>
         <h1 class="display-3">Sign In</h1>
     </div>
-
+	
     <form class="form-signin" role="form" method="post" action=".">
         {% csrf_token %}
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -42,7 +33,6 @@
         <button class="button_submit" type="submit" value="Submit">
         Sign in</button>
         <input type="hidden" name="next" value="{{ next }}"/>
-
     </form>
 
     <p>Not a member? <a href="{% url 'registration_register' %}">Register!</a></p>
