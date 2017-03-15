@@ -138,7 +138,6 @@ class artbudRegistrationView(RegistrationView):
         return reverse('register_profile')
 
 	
-@login_required
 def profile(request, username):
 	try:
 		user = User.objects.get(username=username)
@@ -162,7 +161,6 @@ def profile(request, username):
 
 
 
-@login_required
 def list_profiles(request):
 	userprofile_list = UserProfile.objects.all()
 	
@@ -183,8 +181,6 @@ def like_category(request):
 			cat.likes = likes
 			cat.save()
 		return HttpResponse(likes)
-
-
 
 
 

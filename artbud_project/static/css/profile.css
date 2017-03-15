@@ -1,5 +1,5 @@
 
-label,textarea{ display:inline-block; vertical-align:middle; }
+label,textarea{ display:inline-block; vertical-align:middle; max-height:200px }
 
 
 .form-signin {

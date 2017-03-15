@@ -47,28 +47,28 @@
 		<form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
 			{% csrf_token %}
 			<p>
-			<label for="id_websiteebsite" class="sr-only">Website: </label>
-			<input "style="font-family:Century Gothic, sans-serif" type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
-			
+			<label style="font-family:Century Gothic, sans-serif" for="id_websiteebsite" class="sr-only">Website: {{userprofile.website}}</label>
+			<input style="font-family:Century Gothic, sans-serif" type="text" id="id_website" class="form-control" name="website" placeholder="www.example.com">
+
 			<p>
 			
-			<label for="id_bio" style="padding-right:38px">Bio: </label>
+			<label style="font-family:Century Gothic, sans-serif"  for="id_bio" style="padding-right:38px">Bio: {{userprofile.bio}}</label>
 			<textarea style="font-family:Century Gothic, sans-serif" id="id_bio" class="form-control" name="bio" placeholder="Describe yourself here..." ></textarea>
 			<!--<textarea type="text" id="id_bio" class="form-control" name="Bio" placeholder="About you..." style="font-size:12pt;height:100px;width:250px;">-->
 			
 			<p>
 			
-			<label for="id_picture" style="padding-right:17px">Picture: </label>
-			<input type="file" id="id_picture" name="Picture" placeholder="Picture" ><!--style="color:transparent"-->
+			<label style="font-family:Century Gothic, sans-serif"  for="id_picture" style="padding-right:17px">Profile Picture: </label>
+			<input type="file" id="id_picture" name="picture"><!--style="color:transparent"-->
 			
 			<p>
 			
-			<label for="id_artwork" style="padding-right:10px">Artwork: </label>
-			<input type="file" id="id_artwork" name="Artwork" placeholder="Artwork" ><!--style="color:transparent"-->
+			<label style="font-family:Century Gothic, sans-serif"  for="id_artwork" style="padding-right:10px">Artwork: </label>
+			<input type="file" id="id_artwork" name="artwork"><!--style="color:transparent"-->
 			
 			<p>
 						
-		   <button class="btn btn-lg btn-primary btn-block" type="submit" value="Update" />Submit</button>
+		   <button style="font-family:Century Gothic, sans-serif" class="btn btn-lg btn-primary btn-block" type="submit" value="Update" />Update</button>
 		</form>		
 		
 	{% else %}
