@@ -25,6 +25,7 @@
 
 
 {% block bodyblock %}
+{% if user.is_authenticated %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
     <div class="row">
         <div class="large-12 columns text-center">
@@ -71,6 +72,12 @@
 
     <div id="edit_profile"></div>
     </div>
+{% else %}
+	<p>You are not Signed in. 
+	<br>Please Sign in or Sign up before viewing.
+	</p>
+{% endif %}
+	
 
 	
 {% endblock %}

@@ -18,6 +18,7 @@
 
 
 {% block bodyblock %}
+{% if user.is_authenticated %}
     <div class="row">
         <h1>Artists</h1>
     </div>
@@ -60,6 +61,12 @@
             <p>There are no users for the site.</p>
         {% endif %}
     </div>
+{% else %}
+	<p>You are not Signed in. 
+	<br>Please Sign in or Sign up before viewing.
+	</p>
+{% endif %}
+
 
 
 {% endblock %}

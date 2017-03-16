@@ -155,14 +155,5 @@ def user_upload(request):
     uploads = Upload.objects.all()
 
     return render(request, 'artbud/artwork.html',
-                  {'upload_form': upload_form})
+                  {'upload_form': upload_form)
 		
-
-
-
-
-
-
-	
-	
-	
