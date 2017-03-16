@@ -1,4 +1,4 @@
-% extends 'artbud/base.html' %}
+{% extends 'artbud/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
@@ -17,7 +17,7 @@
     <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
     <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
-{% block body_block %}
+{% block bodyblock %}
     <div class="row">
     <h1> Other </h1>
     </div>

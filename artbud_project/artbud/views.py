@@ -16,27 +16,36 @@ def index(request):
 
 	response = render(request, 'artbud/index.html', context_dict)
 	return response
+	
+def painting(request):
+	context_dict = {}
+	response = render(request,'artbud/painting.html',context_dict)
+	return response
 
+def drawing(request):
+	context_dict = {}
+	response = render(request,'artbud/drawing.html',context_dict)
+	return response
+
+def photography(request):
+	context_dict = {}
+	response = render(request,'artbud/photography.html',context_dict)
+	return response
+
+def sculpture(request):
+	context_dict = {}
+	response = render(request,'artbud/sculpture.html',context_dict)
+	return response
+
+def other(request):
+	context_dict = {}
+	response = render(request,'artbud/other.html',context_dict)
+	return response
 
 def category(request):
 	context_dict = {}
 	response = render(request,'artbud/category.html',context_dict)
 	return response
-	
-	
-def show_category(request, category_name_slug):
-	context_dict = {}
-	
-	try:
-		category = Category.objects.get(slug=category_name_slug)
-		pages = Page.objects.filter(category=category).order_by('-views')
-		context_dict['pages'] = pages
-		context_dict['category'] = category
-	except Category.DoesNotExist:
-		context_dict['category'] = None
-		context_dict['pages'] = None
-		
-	return render(request, 'artbud/category.html', context_dict)
 	
 	
 def add_page(request, category_name_slug):
@@ -93,7 +102,7 @@ def profile(request, username):
 		
 	userprofile = UserProfile.objects.get_or_create(user=user)[0]
 	form = UserProfileForm(
-		{'website': userprofile.website, 'picture': userprofile.picture, 'bio': userprofile.bio, 'artwork': userprofile.artwork})
+		{'website': userprofile.website, 'picture': userprofile.picture, 'bio': userprofile.bio})
 	
 	if request.method == 'POST':
 		form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
