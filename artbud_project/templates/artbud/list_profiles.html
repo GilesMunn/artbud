@@ -31,7 +31,7 @@
                         {% for listuser in userprofile_list %}
                             <div class="row">
                             <div class="list-group-item">
-                                <div class="medium-3 columns">
+                                <div class="medium-2 columns">
                                     {% if listuser.picture %}
                                         <img width="64" height="64" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
                                     {% else %}
@@ -43,7 +43,7 @@
                                         <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
                                     </h4>
                                 </div>
-                                {% if forloop.counter|divisibleby:4 %}
+                                {% if forloop.counter|divisibleby:6 %}
                                     </div>
                                     <div class="row">
                                 {% endif %}
