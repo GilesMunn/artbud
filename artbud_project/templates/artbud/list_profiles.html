@@ -3,48 +3,63 @@
 
 {% block title_block %}Artists{% endblock %}
 
-{% block table_auth %}	
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endblock %}
-{% block table_notauth %}	
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Categories</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 
 {% block bodyblock %}
-<div class="row">
-<h1>Artists</h1>
-<div class="panel">
-	{% if userprofile_list %}
-	<div class="panel-heading">
-		<div class="panel-body">
-			<div class="list-group">
-				{% for listuser in userprofile_list %}
-				<div class="list-group-item">
-					{% if listuser.picture %}
-					<img width="64" height="64" src="{{ MEDIA_URL}}{{listuser.picture}}"/>
-					{% else %}
-					<img width="64" height="64" src="https://tinyurl.com/hea49k5"/>
-					{% endif %}
+    <div class="row">
+        <h1>Artists</h1>
+    </div>
+    <div class="panel">
+        {% if userprofile_list %}
+            <div class="panel-heading">
+                <div class="panel-body">
+                    <div class="list-group">
 
-					<h4 class="list-group-item-heading">
-						<a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
-					</h4>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-	{% else %}
-		<p>There are no users for the site.</p>
-	{% endif %}
-	</div>
-</div>
+
+                        {% for listuser in userprofile_list %}
+                            <div class="row">
+                            <div class="list-group-item">
+                                <div class="large-3 columns">
+                                    {% if listuser.picture %}
+                                        <img width="64" height="64" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
+                                    {% else %}
+                                        <img width="64" height="64" src="https://tinyurl.com/hea49k5"/>
+                                    {% endif %}
+
+
+                                    <h4 class="list-group-item-heading">
+                                        <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
+                                    </h4>
+                                </div>
+                                {% if forloop.counter|divisibleby:4 %}
+                                    </div>
+                                    <div class="row">
+                                {% endif %}
+                        {% endfor %}
+                        </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        {% else %}
+            <p>There are no users for the site.</p>
+        {% endif %}
+    </div>
+
 
 {% endblock %}
