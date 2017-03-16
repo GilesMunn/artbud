@@ -1,0 +1,49 @@
+{% extends 'artbud/base.html' %}
+{% load staticfiles %} 
+
+{% block title_block %}
+	Upload
+{% endblock %}
+{% block body_block %}
+	<!--Checks if a user is logged in, if not they will be asked before viewing this page-->
+	{% if user.is_authenticated %}
+	{% if uploads %}
+	<!--This is based off the html code in index, will (hopefully) display a list of all uploads
+		TODO: make it so just the users uploads are shown. Also make it actually work-->
+        <div class = "cardunit">
+        <div class = "smallcard" id = "myBtn">
+            <div class = "smallpet">
+			{% for upload in uploads %}
+				<img src="{{ MEDIA_URL}}{{ document.picture }}"
+				alt="Picture of {{ document.picture.name }}">
+			</div>
+            <h1>{{ document.picture.name }}</h1>
+            <br>
+            <h4>Dog</h4>
+            <div class = "smallfave">
+            <a href="favourites.html"> <img src="{% static "images/Favourite-icon.png" %}"
+										alt = "Favourite" /></a>
+			</div>
+			{% endfor %}
+		</div>
+		</div>
+	{% else %}
+		<p>No Uploads</p>
+	{% endif %}
+	<!--Here's the form for uploading a new picture-->
+	<div class="form-body">
+		<form id="upload_form" method="post" action="{% url 'upload' %}"
+			enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ upload_form.as_p }}
+		
+		<input type="submit" name="submit" value="Upload" />
+	</div>
+	{% else %}
+		<p>You are not Signed in. 
+		<br>Please Sign in or Sign up before uploading.
+		</p>
+	{% endif %}
+{% endblock %}
+	
+		

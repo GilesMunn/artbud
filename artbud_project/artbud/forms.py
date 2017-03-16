@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from artbud.models import Category, Page, UserProfile
+from artbud.models import Category, Page, UserProfile, Upload
 
 
 class CategoryForm(forms.ModelForm): 
@@ -39,8 +39,12 @@ class UserForm(forms.ModelForm):
 		fields = ('username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
-	#file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 	class Meta:
 		model = UserProfile
-		fields = ('website', 'bio','picture',)#'artwork')
+		fields = ('website', 'bio','picture',)
+		
+class UploadForm(forms.ModelForm):
+        class Meta:
+                model = Upload
+                fields = ('name','picture')
 		

@@ -62,16 +62,11 @@
 					<input type="file" id="id_picture" name="picture">
 					
 					<p>
-					<label for="id_artwork" style="padding-right:10px">Artwork: </label>
-					<input type="file" id="id_artwork" name="artwork">
-					
-					<p>
 					<button class="button_submit" type="submit" value="Update"/>Update</button>
 					</form>
                         {% else %}
                     <p style="padding-left:300px"><strong>Website:</strong> <a href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                     <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
-                    <p style="padding-left:300px"><strong>Artwork:</strong> {{ userprofile.artwork }}</p>
                 {% endif %}
 
     <div id="edit_profile"></div>

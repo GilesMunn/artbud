@@ -129,7 +129,25 @@ def like_category(request):
 		return HttpResponse(likes)
 
 
+@login_required
+def user_upload(request):
+    if request.method == 'POST':
+        upload_form = UploadForm(request.POST, request.FILES)
+        if upload_form.is_valid():
+            upload = upload_form.save()
+            upload.name = name
+            if 'picture' in request.FILES:
+                upload.picture = request.FILES['picture']
+            upload.save()
+        else:
+            print(upload_form.errors)
+    else:
+        upload_form = UploadForm()
+    uploads = Upload.objects.all()
 
+    return render(request, 'artbud/artwork.html',
+                  {'upload_form': upload_form})
+		
 
 
 
