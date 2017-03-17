@@ -1,0 +1,56 @@
+{% extends 'artbud/base.html' %}
+
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endblock %}
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% endblock %}
+
+
+{% block bodyblock %}
+	<div class="row">
+    <div class="large-4 large-centered columns">
+    <p>
+    <div>
+        <h1 class="display-3">Uploads</h1>
+    </div>
+	
+	{% if user.is_authenticated %}
+	{% if uploads %}
+        <div>
+            <div>
+			{% for upload in uploads %}
+				<img src="{{ MEDIA_URL }}/artwork_images/{{ document.picture }}"
+				alt="Picture of {{ document.picture.name }}">
+			</div>
+		</div>
+			{% endfor %}
+	{% else %}
+		<p>No Uploads</p>
+	{% endif %}
+	
+	<form class="form-signin" role="form" method="post" action="{% url 'artwork' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+				<p>
+				<label for="id_artwork" style="padding-right:17px">Artwork: </label>
+				<input type="file" id="id_artwork" name="artwork">
+		
+				<p>
+				<button class="button_submit" type="submit" name="submit" value="Upload" />Upload</button>
+		</form>
+	</div>
+	</div>
+	
+	{% else %}
+		<p>You are not Signed in. 
+		<br>Please Sign in or Sign up before uploading.
+		</p>
+	{% endif %}
+{% endblock %}

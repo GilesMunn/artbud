@@ -16,5 +16,7 @@ urlpatterns = [
 	url(r'^category/photography/$', views.photography, name='photography'),
 	url(r'^category/sculpture/$', views.sculpture, name='sculpture'),
 	url(r'^category/other/$', views.other, name='other'),
+	
+	url(r'^artwork/$', views.artwork, name='artwork'),
 ]
 

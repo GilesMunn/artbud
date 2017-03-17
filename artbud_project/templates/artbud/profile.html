@@ -5,22 +5,22 @@
 
 {% block table_auth %}	
 {% if selecteduser.username == user.username %}
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+	<li class="step"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% else %} 
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+	<li class="step"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endif %}
 {% endblock %}
 {% block table_notauth %}	
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+	<li class="step"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+	<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 
@@ -64,8 +64,8 @@
 					
 					<p>
 					<button class="button_submit" type="submit" value="Update"/>Update</button>
-					</form>
-                        {% else %}
+			</form>
+				{% else %}
                     <p style="padding-left:300px"><strong>Website:</strong> <a href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                     <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
                 {% endif %}

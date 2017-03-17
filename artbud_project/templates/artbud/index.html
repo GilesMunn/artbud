@@ -4,16 +4,16 @@
 {% block title_block %} Homepage {% endblock %}
 
 {% block table_auth %}	
-<li class="active"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+	<li class="active"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endblock %}
 {% block table_notauth %}	
-<li class="active"><a href="{% url 'index' %}">Home</a></li>
-<li class="step"><a href="{% url 'category' %}">Categories</a></li>
-<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+	<li class="active"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+	<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 {% block bodyblock %}

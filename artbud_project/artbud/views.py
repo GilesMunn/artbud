@@ -47,7 +47,11 @@ def category(request):
 	response = render(request,'artbud/category.html',context_dict)
 	return response
 	
-	
+def artwork(request):
+	context_dict = {}
+	response = render(request,'artbud/artwork.html',context_dict)
+	return response
+		
 def add_page(request, category_name_slug):
 	try:
 		category = Category.objects.get(slug=category_name_slug)

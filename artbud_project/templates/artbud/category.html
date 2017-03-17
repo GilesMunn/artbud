@@ -1,17 +1,17 @@
 {% extends 'artbud/base.html' %}
 {% load staticfiles %}
 
-{% block title_block %}Categories{% endblock %}
+{% block title_block %}Artwork{% endblock %}
 
 {% block table_auth %}	
 <li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="active"><a href="{% url 'category' %}">Categories</a></li>
+<li class="active"><a href="{% url 'category' %}">Artwork</a></li>
 <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
 <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endblock %}
 {% block table_notauth %}	
 <li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="active"><a href="{% url 'category' %}">Categories</a></li>
+<li class="active"><a href="{% url 'category' %}">Artwork</a></li>
 <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
 <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
