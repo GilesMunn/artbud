@@ -50,6 +50,11 @@ def category(request):
 def artwork(request):
 	context_dict = {}
 	response = render(request,'artbud/artwork.html',context_dict)
+	return response	
+	
+def logout(request):
+	context_dict = {}
+	response = render(request,'registration/logout.html',context_dict)
 	return response
 		
 def add_page(request, category_name_slug):

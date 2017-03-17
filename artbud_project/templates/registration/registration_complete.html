@@ -5,8 +5,15 @@
 	{% endblock %}
 	
 	{% block bodyblock %}
-		<h1>Registration Complete</h1>
-		<p>You are now registered, redirecting to homepage.</p>
+		<div class="row">
+        <div class="large-12 columns text-center">
+            <h1 class="display-3">
+                <center>You are now registered.</center>
+            </h1>
+			<p>
+				<center>Redirecting to homepage.</center>
+			</p>
+        </div>
 		
 		<meta http-equiv="refresh" content="3;{% url 'index' %}" />
 	{% endblock %}

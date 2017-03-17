@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^profile/(?P<username>[\w\-]+)/$', views.profile, name='profile'),
     url(r'^profiles/$', views.list_profiles, name='list_profiles'),
 	url(r'^like/$', views.like_category, name='like_category'),
+	url(r'^logout/$', views.logout, name='logout'),
 	
 	url(r'^category/painting/$', views.painting, name='painting'),
 	url(r'^category/drawing/$', views.drawing, name='drawing'),
