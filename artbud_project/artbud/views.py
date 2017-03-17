@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from artbud.models import Category, Page, UserProfile
-from artbud.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+from artbud.models import Category, Page, UserProfile, Upload
+from artbud.forms import CategoryForm, PageForm, UserForm, UserProfileForm, UploadForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -46,11 +46,6 @@ def category(request):
 	context_dict = {}
 	response = render(request,'artbud/category.html',context_dict)
 	return response
-	
-def artwork(request):
-	context_dict = {}
-	response = render(request,'artbud/artwork.html',context_dict)
-	return response	
 	
 def logout(request):
 	context_dict = {}
@@ -163,7 +158,7 @@ def user_upload(request):
         upload_form = UploadForm()
     uploads = Upload.objects.all()
 
-    return render(request, 'artbud/artwork.html',
+    return render(request, 'artbud/upload.html',
                   {'upload_form': upload_form})
 				  
 		

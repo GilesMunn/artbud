@@ -18,6 +18,6 @@ urlpatterns = [
 	url(r'^category/sculpture/$', views.sculpture, name='sculpture'),
 	url(r'^category/other/$', views.other, name='other'),
 	
-	url(r'^artwork/$', views.artwork, name='artwork'),
+	url(r'^upload/$', views.user_upload, name='upload'),
 ]
 

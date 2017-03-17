@@ -19,8 +19,8 @@
     <div class="large-4 large-centered columns">
     <p>
     <div>
+	<center>
         <h1 class="display-3">Uploads</h1>
-    </div>
 	
 	{% if user.is_authenticated %}
 	{% if uploads %}
@@ -36,11 +36,14 @@
 		<p>No Uploads</p>
 	{% endif %}
 	
-	<form class="form-signin" role="form" method="post" action="{% url 'artwork' %}" enctype="multipart/form-data">
+    </div>
+	</center>
+	
+	<form class="form-signin" role="form" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 				<p>
-				<label for="id_artwork" style="padding-right:17px">Artwork: </label>
-				<input type="file" id="id_artwork" name="artwork">
+				<label for="id_upload" style="padding-right:17px">Artwork: </label>
+				<input type="file" id="id_upload" name="upload">
 		
 				<p>
 				<button class="button_submit" type="submit" name="submit" value="Upload" />Upload</button>
