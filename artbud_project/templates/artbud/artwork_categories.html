@@ -43,41 +43,6 @@
 		<p>No Uploads</p>
 	{% endif %}
 	
-    </div>
-	<div class="medium-9 columns">
-		</center>
-	<form id="upload_form" class="form-body" role="form" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ upload_form.as_P }}
-				
-				<p>
-				
-				<label for="id_name" style="padding-right:17px">Name: </label>
-				<input id="id_picture" maxlength="128" name="name" type="text">
-				
-				<p>
-				
-				<!--<label for="id_category">Category: </label>
-				<select id="id_category" name="category">
-					<option value>--------</option>
-					<option value="1">Drawing</option>
-					<option value="2">Painting</option>
-					<option value="3">Photography</option>
-					<option value="4">Sculpture</option>
-					<option value="5">Other</option>
-				</select>-->
-				
-				<p>
-				
-				<label for="id_picture" style="padding-right:17px">Artwork: </label>
-				<input type="file" id="id_picture" name="picture">
-		
-				<p>
-				<button class="button_submit" type="submit" name="submit" value="Upload" />Upload</button>
-		</form>
-	</div>
-	</div>
-	</div>
 	
 	{% else %}
 		<p>You are not logged in. 
