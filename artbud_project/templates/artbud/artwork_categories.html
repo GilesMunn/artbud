@@ -25,14 +25,20 @@
         <h1 class="display-3">Uploads</h1>
 	
 	{% if user.is_authenticated %}
-	{% if artwork_list %}
-        <div>
-            <div>
-			{% for upload in artwork_list %}
-				<img src="{{ MEDIA_URL }}{{ upload.picture }}"/>
-			</div>
+	{% if uploads %}
+			<div>
+			{% for upload in uploads %}
+			<div>
+				<div>
+					<img src="{{ MEDIA_URL }}/artwork_images/{{ upload.picture }}" 
+					alt="Picture of {{ upload.name }}">
+				</div>
+				<h1>{{ upload.name }}</h1>
+				<br>
+				<!--<h4>{{ upload.category }}</h4>-->
 		</div>
-			{% endfor %}
+					{% endfor %}
+		</div>
 	{% else %}
 		<p>No Uploads</p>
 	{% endif %}
