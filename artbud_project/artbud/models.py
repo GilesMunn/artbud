@@ -70,7 +70,6 @@ class ArtworkForm(forms.ModelForm):
     contact = models.EmailField()
 
 
-
 class UserProfileForm(forms.ModelForm):
     website = forms.URLField(required=False)
     picture = forms.ImageField(required=False)
@@ -82,14 +81,16 @@ class UserProfileForm(forms.ModelForm):
 
 
 def user_directory_path(instance, filename):
-    return 'artwork_images/user_{0}/{1}'.format(instance.user.id, filename)
+    return 'artwork_images/{0}/{1}'.format(instance.user, filename)
 
 
 class Upload(models.Model):
-    user = models.ForeignKey(UserProfile)
+    user = models.ForeignKey(User)
+    #category = models.ForeignKey(Category)
     name = models.CharField(max_length=128)
     picture = models.ImageField(upload_to=user_directory_path)
     rating = models.IntegerField(default=0)
+
 
     def __str__(self):
         return self.name
