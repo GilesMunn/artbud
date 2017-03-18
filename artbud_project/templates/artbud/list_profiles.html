@@ -18,54 +18,45 @@
 
 
 {% block bodyblock %}
-{% if user.is_authenticated %}
-    <div class="row">
-        <h1>Artists</h1>
-    </div>
-    <div class="panel">
+    {% if user.is_authenticated %}
+        <div class="row">
+            <h1>Artists</h1>
+        </div>
+
         {% if userprofile_list %}
-            <div class="panel-heading">
-                <div class="panel-body">
-                    <div class="list-group">
+            <div class="row">
+            {% for listuser in userprofile_list %}
+
+                <div class="medium-2 columns text-center">
+                    {% if listuser.picture %}
+                        <img width="128" height="128" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
+                    {% else %}
+                        <img width="128" height="128" src="https://tinyurl.com/hea49k5"/>
+                    {% endif %}
 
 
-                        {% for listuser in userprofile_list %}
-                            <div class="row">
-                            <div class="list-group-item">
-                                <div class="medium-2 columns text-center">
-                                    {% if listuser.picture %}
-                                        <img width="128" height="128" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
-                                    {% else %}
-                                        <img width="128" height="128" src="https://tinyurl.com/hea49k5"/>
-                                    {% endif %}
-
-
-                                    <h4 class="list-group-item-heading">
-                                        <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
-                                    </h4>
-                                </div>
-                                {% if forloop.counter|divisibleby:6 %}
-                                    </div>
-                                    <div class="row">
-                                {% endif %}
-                        {% endfor %}
-                        </div>
-                        </div>
-
-
-                    </div>
+                    <h4 class="list-group-item-heading">
+                        <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
+                    </h4>
                 </div>
-            </div>
+                {% if forloop.counter|divisibleby:6 %}
+                    </div>
+                    <div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
 
         {% else %}
             <p>There are no users for the site.</p>
         {% endif %}
-    </div>
-{% else %}
-	<p>You are not Signed in. 
-	<br>Please Sign in or Sign up before viewing.
-	</p>
-{% endif %}
+
+    {% else %}
+        <p>You are not Signed in.
+            <br>Please Sign in or Sign up before viewing.
+        </p>
+    {% endif %}
 
 
 
