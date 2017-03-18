@@ -25,12 +25,11 @@
         <h1 class="display-3">Uploads</h1>
 	
 	{% if user.is_authenticated %}
-	{% if uploads %}
+	{% if artwork_list %}
         <div>
             <div>
-			{% for upload in uploads %}
-				<img src="{{ MEDIA_URL }}/artwork_images/{{ user.username }}/{{ document.picture }}"
-				alt="Picture of {{ document.picture.name }}">
+			{% for upload in artwork_list %}
+				<img src="{{ MEDIA_URL }}{{ upload.picture }}"/>
 			</div>
 		</div>
 			{% endfor %}
@@ -75,8 +74,8 @@
 	</div>
 	
 	{% else %}
-		<p>You are not Signed in. 
-		<br>Please Sign in or Sign up before uploading.
+		<p>You are not logged in. 
+		<br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a> before uploading.
 		</p>
 	{% endif %}
 {% endblock %}

@@ -195,3 +195,11 @@ def user_upload(request):
 
     return render(request, 'artbud/upload.html',
                   {'uploads': uploads, 'upload_form': upload_form})
+				  
+				  
+def list_artwork(request):
+    artwork_list = Artwork.objects.all()
+
+    return render(request, 'artbud/photography.html',
+                  {'artwork_list': artwork_list})
+
