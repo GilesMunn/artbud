@@ -57,4 +57,4 @@ class UserProfileForm(forms.ModelForm):
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Upload
-        fields = ('name', 'picture',) #'category')
+        fields = ('name', 'picture', 'price', 'comment',) #'category')

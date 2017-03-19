@@ -1,0 +1,76 @@
+{% extends 'artbud/base.html' %}
+{% load staticfiles %}
+
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% endblock %}
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% endblock %}
+
+{% block bodyblock %}
+	<div class="row">
+    <div class="large-4 large-centered columns">
+    <p>
+    <div>
+	<center>
+        <h1 class="display-3">Uploads</h1>
+		
+{% if user.is_authenticated %}
+<div class="medium-9 columns">
+		</center>
+	<form id="upload_form" class="form-body" role="form" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ upload_form.as_P }}
+				
+				<p>
+				
+				<label for="id_name" style="padding-right:17px">Name: </label>
+				<input id="id_picture" maxlength="128" name="name" type="text">
+				
+				<p>
+				
+				<!--<label for="id_category">Category: </label>
+				<select id="id_category" name="category">
+					<option value>--------</option>
+					<option value="1">Drawing</option>
+					<option value="2">Painting</option>
+					<option value="3">Photography</option>
+					<option value="4">Sculpture</option>
+					<option value="5">Other</option>
+				</select>-->
+				
+				<p>
+				
+				<label for="id_price" style="padding-right:17px">Price: </label>
+				<input type="text" id="id_price" name="price">
+				
+				<p>
+				
+				<label for="id_comment" style="padding-right:38px">Comment: </label>
+					<textarea style="max-height:200px" id="id_comment" class="form-control" name="comment" placeholder="Something about the piece..." ></textarea>
+					
+				<p>
+				
+				<label for="id_picture" style="padding-right:17px">Artwork: </label>
+				<input type="file" id="id_picture" name="picture">
+		
+				<p>
+				<button class="button_submit" type="submit" name="submit" value="Upload" />Add Artwork</button>
+		</form>
+	</div>
+	</div>
+	</div>
+	
+{% else %}
+		<p>You are not logged in. 
+		<br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a> before uploading.
+		</p>
+	{% endif %}
+{% endblock %}

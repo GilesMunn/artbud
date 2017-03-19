@@ -60,28 +60,11 @@ def logout(request):
     response = render(request, 'registration/logout.html', context_dict)
     return response
 
-
-def add_page(request, category_name_slug):
-    try:
-        category = Category.objects.get(slug=category_name_slug)
-    except Category.DoesNotExist:
-        category = None
-
-    form = PageForm()
-    if request.method == 'POST':
-        form = PageForm(request.POST)
-        if form.is_valid():
-            if category:
-                page = form.save(commit=False)
-                page.category = category
-                page.views = 0
-                page.save()
-                return show_category(request, category_name_slug)
-        else:
-            print(form.errors)
-
-    context_dict = {'form': form, 'category': category}
-    return render(request, 'artbud/add_page.html', context_dict)
+@login_required
+def add_artwork(request):
+    context_dict = {}
+    response = render(request, 'artbud/add_artwork.html', context_dict)
+    return response
 
 
 @login_required
@@ -102,24 +85,6 @@ def register_profile(request):
 
     return render(request, 'artbud/profile_registration.html', context_dict)
 
-
-@login_required
-def add_artwork(request):
-    form = ArtworkForm()
-    if request.method == 'POST':
-        form = ArtworkForm(request.POST, request.FILES)
-        if form.is_valid():
-            artwork = form.save(commit=False)
-            artwork.user = request.user
-            artwork.save()
-
-            return redirect('index')
-        else:
-            print(form.errors)
-
-    context_dict = {'form': form}
-
-    return render(request, 'artbud/artwork_adding.html', context_dict)
 
 
 class artbudRegistrationView(RegistrationView):
