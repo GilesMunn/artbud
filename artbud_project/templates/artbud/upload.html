@@ -8,13 +8,35 @@
 		<div class="row">
         <div class="large-12 columns text-center">
             <h1 class="display-3">
-                <center>Artwork Uploaded.</center>
+                <center>Artwork</center>
             </h1>
-			<p>
-				<center>Redirecting to categories.</center>
-			</p>
         </div>
 		
-		<meta http-equiv="refresh" content="3;{% url 'category' %}" />
+		{% if user.is_authenticated %}
+	{% if uploads %}
+	
+			<div>
+			{% for upload in uploads %}
+			<div class="row">
+				<div class="medium-2 columns text-center float-left">
+					<img src="{{ MEDIA_URL }}{{ upload.picture }}" 
+					alt="Picture of {{ upload.name }}" height="150" width="150">
+				</div>
+				<p>{{ upload.name }}<p>
+				<p>{{ upload.category }}<p>
+				<p>{{ upload.price }}<p>
+				<p>{{ upload.comment }}<p>
+		</div>
+					{% endfor %}
+		</div>
+	{% else %}
+		<p>No Uploads</p>
+	{% endif %}
+	
+	{% else %}
+		<p>You are not Signed in. 
+		<br>Please Sign in or Sign up before uploading.
+		</p>
+	{% endif %}
 	{% endblock %}
 	

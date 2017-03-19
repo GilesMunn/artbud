@@ -150,15 +150,14 @@ def user_upload(request):
                 upload.picture = request.FILES['picture']
             upload.save()
 
-            return render(request, 'artbud/upload.html', {'upload_form': upload_form})
+            return render(request, 'artbud/upload_complete.html', {'upload_form': upload_form})
         else:
             print(upload_form.errors)
     else:
         upload_form = UploadForm()
-    uploads = Upload.objects.all()
+	uploads = Upload.objects.all()
 
-    return render(request, 'artbud/upload.html',
-                  {'uploads': uploads, 'upload_form': upload_form})
+    return render(request, 'artbud/upload.html',{'uploads': uploads, 'upload_form': upload_form})
 				  
 				
 

@@ -1,0 +1,20 @@
+{% extends "artbud/base.html" %}
+
+{% block title_block %}
+	Upload Complete
+{% endblock %}
+
+{% block bodyblock %}
+	<div class="row">
+	<div class="large-12 columns text-center">
+		<h1 class="display-3">
+			<center>Artwork Uploaded.</center>
+		</h1>
+		<p>
+			<center>Redirecting to other uploads..</center>
+		</p>
+	</div>
+	
+	<meta http-equiv="refresh" content="3;{% url 'upload' %}" />
+	
+{% endblock %}

@@ -15,27 +15,29 @@
 {% endblock %}
 
 
-
 {% block bodyblock %}
-	<div class="row">
-    <div class="large-4 large-centered columns">
-    <p>
-    <div>
-	<center>
-        <h1 class="display-3">Uploads</h1>
-	
 	{% if user.is_authenticated %}
-	{% if uploads %}
+				
+	
+	<div>
+	<img src="/media/artwork_images/{{ user.username }}/IMG_20150619_175844.jpg" width="250" height="250">
+	</div>
+	
+	<div>
+	<img src="{{ MEDIA_URL }}/artwork_images/{{ user.username }}/IMG_20150621_110106.jpg" width="250" height="250">
+	</div>
+	
+	{% if files %}
 			<div>
-			{% for upload in uploads %}
+			{% for upload in files %}
 			<div>
 				<div>
-					<img src="{{ MEDIA_URL }}/artwork_images/{{ upload.picture }}" 
+					<img src="{{ MEDIA_URL }}{{ upload.picture }}" 
 					alt="Picture of {{ upload.name }}">
 				</div>
 				<h1>{{ upload.name }}</h1>
 				<br>
-				<!--<h4>{{ upload.category }}</h4>-->
+				<h4>{{ upload.category }}</h4>
 		</div>
 					{% endfor %}
 		</div>
@@ -43,12 +45,9 @@
 		<p>No Uploads</p>
 	{% endif %}
 	
-	
 	{% else %}
 		<p>You are not logged in. 
 		<br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a> before uploading.
 		</p>
 	{% endif %}
-    </div>
-    </div>
 {% endblock %}
