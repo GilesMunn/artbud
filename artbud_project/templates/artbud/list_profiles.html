@@ -27,7 +27,7 @@
             <div class="row">
             {% for listuser in userprofile_list %}
 
-                <div class="medium-2 columns text-center">
+                <div class="medium-2 columns text-center float-left">
                     {% if listuser.picture %}
                         <img width="128" height="128" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
                     {% else %}
