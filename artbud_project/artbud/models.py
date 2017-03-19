@@ -52,17 +52,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-class Artwork(models.Model):
-    user = models.OneToOneField(User)
-    category = models.ForeignKey(Category)
-    name = models.CharField(max_length=200)
-    price = models.IntegerField()
-    contact = models.EmailField()
-    likes = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.name
-
 class ArtworkForm(forms.ModelForm):
     category = forms.CharField()
     name = models.CharField(max_length=200)
@@ -86,7 +75,7 @@ def user_directory_path(instance, filename):
 
 class Upload(models.Model):
 	user = models.ForeignKey(User)
-	#category = models.ForeignKey(Category)
+	category = models.CharField(max_length=128)
 	name = models.CharField(max_length=128)
 	picture = models.ImageField(upload_to=user_directory_path)
 	rating = models.IntegerField(default=0)

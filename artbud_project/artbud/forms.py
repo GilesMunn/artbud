@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from artbud.models import Category, Page, UserProfile, Upload, Artwork
+from artbud.models import Category, Page, UserProfile, Upload
 
 
 class CategoryForm(forms.ModelForm):
@@ -34,12 +34,6 @@ class PageForm(forms.ModelForm):
             return cleaned_data
 
 
-class ArtworkForm(forms.ModelForm):
-    class Meta:
-        model = Artwork
-        fields = ('category', 'name', 'price', 'contact')
-
-
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
@@ -57,4 +51,4 @@ class UserProfileForm(forms.ModelForm):
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Upload
-        fields = ('name', 'picture', 'price', 'comment',) #'category')
+        fields = ('name', 'picture', 'price', 'comment', 'category')

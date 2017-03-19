@@ -3,8 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from artbud.models import Category, Page, UserProfile, Upload
-from artbud.forms import CategoryForm, PageForm, UserForm, UserProfileForm, UploadForm, ArtworkForm
-from datetime import datetime
+from artbud.forms import CategoryForm, PageForm, UserForm, UserProfileForm, UploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from registration.backends.simple.views import RegistrationView
