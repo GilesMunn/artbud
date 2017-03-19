@@ -4,8 +4,8 @@ A web application developed to help any art soul share their art with the world.
 
 Dominik Bladek - 2144751b
 
-Giles Munn - 
+Giles Munn - 2227780m
 
-Charlie Parker - 
+Charlie Parker - 2144176P
 
-Andreas Klitis - 
+Andreas Klitis - 2141487K
