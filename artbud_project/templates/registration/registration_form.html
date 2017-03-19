@@ -5,7 +5,7 @@
 
 {% block table_notauth %}	
 	<li class="step"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'upload' %}">Artwork</a></li>
 	<li class="active"><a href="{% url 'registration_register' %}">Register</a></li>
 	<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
@@ -22,6 +22,7 @@
 	
     <form role="form" class="form-signin" method="post" action=".">
             {% csrf_token %}
+			
             <div class="form-group">
 			
                 <p class="required">

@@ -5,13 +5,13 @@
 
 {% block table_auth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'upload' %}">Artwork</a></li>
     <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
     <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endblock %}
 {% block table_notauth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'upload' %}">Artwork</a></li>
     <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
     <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
@@ -20,7 +20,7 @@
 {% block bodyblock %}
     {% if user.is_authenticated %}
         <div class="row">
-            <h1>Artists</h1>
+            <center><h1>Artists</h1><center>
         </div>
 
         {% if userprofile_list %}
@@ -29,7 +29,7 @@
 
                 <div class="medium-2 columns text-center float-left">
                     {% if listuser.picture %}
-                        <img width="128px" height="128ox" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
+                        <img width="128px" height="128px" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
                     {% else %}
                         <img width="128" height="128" src="https://tinyurl.com/hea49k5"/>
                     {% endif %}
