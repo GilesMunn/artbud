@@ -3,6 +3,8 @@ from django.template.defaultfilters import slugify
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 class Category(models.Model):
@@ -74,17 +76,49 @@ def user_directory_path(instance, filename):
 
 
 class Upload(models.Model):
-	user = models.ForeignKey(User)
-	category = models.CharField(max_length=128)
-	name = models.CharField(max_length=128)
-	picture = models.ImageField(upload_to=user_directory_path)
-	rating = models.IntegerField(default=0)
-	price = models.IntegerField(default=0)
-	comment = models.CharField(max_length=256)
+    user = models.ForeignKey(User)
+    category = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+    picture = models.ImageField(upload_to=user_directory_path)
+    rating = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
+    comment = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
 
 
-	def __str__(self):
-		return self.name
+class Comment(models.Model):
+    user = models.ForeignKey(User)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type','object_id')
 
-	def __unicode__(self):
-		return self.name
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return str(self.user.username)
+
+    def __str__(self):
+        return str(self.user.username)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
