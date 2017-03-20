@@ -17,37 +17,48 @@
 
 
 {% block bodyblock %}
-    <div class="row">
+
     {% if user.is_authenticated %}
         {% if uploads %}
-
-            <div>
+            <div class="row">
                 {% for upload in uploads %}
-                    <div class="row">
+                    {% if upload.category == "Drawing" %}
+
                         <div class="medium-2 columns text-center float-left">
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
-                                 alt="Picture of {{ upload.name }}" height="128px" width="128px">
+                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
                             <p>
-                        </div>
-                        <p class="list-group-item-heading"><br>
-                            Name: {{ upload.name }}<br>
+
+                        <p class="list-group-item-heading">
+                            Name: {{ upload.name }}
+                            {% comment %}
                             Type: {{ upload.category }}<br>
                             Price: {{ upload.price }}<br>
                             Comment: {{ upload.comment }}<br>
                             Submitted by: {{ upload.user }}<br>
-                        <p>
-                    </div>
+                            {% endcomment %}
+
+                        </div>
+                        {% if forloop.counter|divisibleby:6 %}
+                        </div>
+                            <div class="row">
+                    {% endif %}
+                    {% endif %}
                 {% endfor %}
             </div>
         {% else %}
+            <div class="row">
             <p>No Uploads</p>
+            </div>
         {% endif %}
 
     {% else %}
+        <div class="row">
         <p>You are not Signed in.
             <br>Please Sign in or Sign up before uploading.
         </p>
     {% endif %}
+    </div>
     </div>
 {% endblock %}
 	
