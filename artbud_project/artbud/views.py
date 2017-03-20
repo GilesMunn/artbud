@@ -230,21 +230,3 @@ def user_upload(request):
 
     return render(request, 'artbud/upload.html',{'uploads': uploads, 'upload_form': upload_form})
 	
-@login_required
-def user_upload_own(request):
-    if request.method == 'POST':
-        upload_form = UploadForm(request.POST, request.FILES)
-        if upload_form.is_valid():
-            upload = upload_form.save(commit=False)
-            upload.user = request.user
-            if 'picture' in request.FILES:
-                upload.picture = request.FILES['picture']
-            upload.save()
-            return render(request, 'artbud/upload_complete.html', {'upload_form': upload_form})
-        else:
-            print(upload_form.errors)
-    else:
-        upload_form = UploadForm()
-        uploads = Upload.objects.filter(user=upload.user)
-
-    return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
