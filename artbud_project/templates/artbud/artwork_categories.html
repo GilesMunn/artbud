@@ -16,7 +16,7 @@
 
 
 {% block bodyblock %}
-    <div clas="row">
+    <div class="row">
 	{% if user.is_authenticated %}
         {% if uploads %}
             <div class="row">
@@ -48,7 +48,7 @@
             <p>No Uploads</p>
             </div>
         {% endif %}
-
+	
     {% else %}
         <div class="row">
         <p>You are not Signed in.
@@ -56,4 +56,5 @@
         </p>
     {% endif %}
     </div>
+	
 {% endblock %}
