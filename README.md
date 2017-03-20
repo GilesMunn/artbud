@@ -1,11 +1,11 @@
 # Artbud
 Web App Development Group Project
-A web application developed to help any art soul share their art with the world.
+A web application developed to help any artistic soul share their art with the world.
 
 Dominik Bladek - 2144751b
 
 Giles Munn - 2227780m
 
-Charlie Parker - 2144176P
+Charlie Parker - 2144176p
 
-Andreas Klitis - 2141487K
+Andreas Klitis - 2141487k
