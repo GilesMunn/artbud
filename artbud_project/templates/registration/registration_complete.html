@@ -1,8 +1,6 @@
 {% extends "artbud/base.html" %}
 	
-	{% block title_block %}
-		Registration Complete
-	{% endblock %}
+	{% block title_block %}Registration Complete{% endblock %}
 	
 	{% block bodyblock %}
 		<div class="row">
@@ -11,10 +9,10 @@
                 <center>You are now registered.</center>
             </h1>
 			<p>
-				<center>Redirecting to homepage.</center>
+				<center>Redirecting to your profile.</center>
 			</p>
         </div>
 		
-		<meta http-equiv="refresh" content="3;{% url 'index' %}" />
+		<meta http-equiv="refresh" content="3;{% url 'profile' user.username %}" />
 	{% endblock %}
 	
