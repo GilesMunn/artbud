@@ -4,13 +4,13 @@
 
 {% block table_auth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
     <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
     <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
 {% endblock %}
 {% block table_notauth %}
     <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
     <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
     <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
@@ -22,7 +22,6 @@
         {% if uploads %}
             <div class="row">
                 {% for upload in uploads %}
-                    {% if upload.category == "Drawing" %}
 
                         <div class="medium-2 columns text-center float-left">
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
@@ -42,7 +41,6 @@
                         {% if forloop.counter|divisibleby:6 %}
                         </div>
                             <div class="row">
-                    {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>

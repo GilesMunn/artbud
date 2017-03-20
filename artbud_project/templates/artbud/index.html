@@ -5,7 +5,7 @@
 
 {% block table_auth %}	
 	<li class="active"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'upload' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
 	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
 	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
 {% endblock %}

@@ -18,38 +18,42 @@
 {% block bodyblock %}
     <div clas="row">
 	{% if user.is_authenticated %}
-				
-	
-	<div>
-	<img src="/media/artwork_images/{{ user.username }}/IMG_20150619_175844.jpg" width="250" height="250">
-	</div>
-	
-	<div>
-	<img src="{{ MEDIA_URL }}/artwork_images/{{ user.username }}/IMG_20150621_110106.jpg" width="250" height="250">
-	</div>
-	
-	{% if files %}
-			<div>
-			{% for upload in files %}
-			<div>
-				<div>
-					<img src="{{ MEDIA_URL }}{{ upload.picture }}" 
-					alt="Picture of {{ upload.name }}">
-				</div>
-				<h1>{{ upload.name }}</h1>
-				<br>
-				<h4>{{ upload.category }}</h4>
-		</div>
-					{% endfor %}
-		</div>
-	{% else %}
-		<p>No Uploads</p>
-	{% endif %}
-	
-	{% else %}
-		<p>You are not logged in. 
-		<br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a> before uploading.
-		</p>
-	{% endif %}
+        {% if uploads %}
+            <div class="row">
+                {% for upload in uploads %}
+
+                        <div class="medium-2 columns text-center float-left">
+                            <img src="{{ MEDIA_URL }}{{ upload.picture }}"
+                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
+                            <p>
+
+                        <p class="list-group-item-heading">
+                            Name: {{ upload.name }}
+                            {% comment %}
+                            Type: {{ upload.category }}<br>
+                            Price: {{ upload.price }}<br>
+                            Comment: {{ upload.comment }}<br>
+                            Submitted by: {{ upload.user }}<br>
+                            {% endcomment %}
+
+                        </div>
+                        {% if forloop.counter|divisibleby:6 %}
+                        </div>
+                            <div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row">
+            <p>No Uploads</p>
+            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="row">
+        <p>You are not Signed in.
+        <br>Please Sign in or Sign up before uploading.
+        </p>
+    {% endif %}
     </div>
 {% endblock %}
