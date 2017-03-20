@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^category/sculpture/$', views.user_upload_sculpture, name='sculpture'),
     url(r'^category/other/$', views.user_upload_other, name='other'),
     url(r'^add_artwork/$', views.add_artwork, name='add_artwork'),
+	url(r'^upload/$', views.user_upload, name='upload'),
 ]
