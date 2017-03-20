@@ -59,6 +59,7 @@ def logout(request):
     response = render(request, 'registration/logout.html', context_dict)
     return response
 
+
 @login_required
 def add_artwork(request):
     context_dict = {}
@@ -83,7 +84,6 @@ def register_profile(request):
     context_dict = {'form': form}
 
     return render(request, 'artbud/profile_registration.html', context_dict)
-
 
 
 class artbudRegistrationView(RegistrationView):
@@ -142,7 +142,7 @@ def user_upload(request):
         upload_form = UploadForm(request.POST, request.FILES)
 
         if upload_form.is_valid():
-            
+
             upload = upload_form.save(commit=False)
             upload.user = request.user
 
@@ -155,9 +155,6 @@ def user_upload(request):
             print(upload_form.errors)
     else:
         upload_form = UploadForm()
-	uploads = Upload.objects.all()
+        uploads = Upload.objects.all()
 
-    return render(request, 'artbud/upload.html',{'uploads': uploads, 'upload_form': upload_form})
-				  
-				
-
+    return render(request, 'artbud/upload.html', {'uploads': uploads, 'upload_form': upload_form})

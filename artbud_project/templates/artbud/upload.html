@@ -1,50 +1,53 @@
 {% extends "artbud/base.html" %}
-	
+
 {% block title_block %}Artwork{% endblock %}
 
-{% block table_auth %}	
-	<li class="step"><a href="{% url 'index' %}">Home</a></li>
-	<li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
-	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
 {% endblock %}
-{% block table_notauth %}	
-	<li class="step"><a href="{% url 'index' %}">Home</a></li>
-	<li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
-	<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-	<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'upload' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 
 {% block bodyblock %}
-{% if user.is_authenticated %}
-{% if uploads %}
+    <div class="row">
+    {% if user.is_authenticated %}
+        {% if uploads %}
 
-		<div>
-		{% for upload in uploads %}
-		<div class="row">
-			<div class="medium-2 columns text-center float-left">
-				<img src="{{ MEDIA_URL }}{{ upload.picture }}" 
-				alt="Picture of {{ upload.name }}" height="128px" width="128px"><p>
-			</div>
-			<p class="list-group-item-heading"><br>
-			Name: {{ upload.name }}<br>
-			Type: {{ upload.category }}<br>
-			Price: {{ upload.price }}<br>
-			Comment: {{ upload.comment }}<br>
-			Submitted by: {{ upload.user }}<br>
-			<p>
-	</div>
-				{% endfor %}
-	</div>
-{% else %}
-	<p>No Uploads</p>
-{% endif %}
+            <div>
+                {% for upload in uploads %}
+                    <div class="row">
+                        <div class="medium-2 columns text-center float-left">
+                            <img src="{{ MEDIA_URL }}{{ upload.picture }}"
+                                 alt="Picture of {{ upload.name }}" height="128px" width="128px">
+                            <p>
+                        </div>
+                        <p class="list-group-item-heading"><br>
+                            Name: {{ upload.name }}<br>
+                            Type: {{ upload.category }}<br>
+                            Price: {{ upload.price }}<br>
+                            Comment: {{ upload.comment }}<br>
+                            Submitted by: {{ upload.user }}<br>
+                        <p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No Uploads</p>
+        {% endif %}
 
-{% else %}
-	<p>You are not Signed in. 
-	<br>Please Sign in or Sign up before uploading.
-	</p>
-{% endif %}
+    {% else %}
+        <p>You are not Signed in.
+            <br>Please Sign in or Sign up before uploading.
+        </p>
+    {% endif %}
+    </div>
 {% endblock %}
 	
