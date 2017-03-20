@@ -65,29 +65,66 @@
 
                         <p>
                         <div class="input-group">
-                        <div class="input-group-button">
-                            <input class="button_submit" type="submit" style="margin:  0 30px 0 0 ;" value="Update"/>
+                            <div class="input-group-button">
+                                <input class="button_submit" type="submit" style="margin:  0 30px 0 0 ;"
+                                       value="Update"/>
                             </div>
                             </form>
 
 
                             <form method="get" action="{% url 'add_artwork' %}">
                                 <div class="input-group-button">
-                                <input class="button_submit" type="submit" value="Add Artwork"/>
+                                    <input class="button_submit" type="submit" value="Add Artwork"/>
                                 </div>
                             </form>
 
+                        </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            {% if uploads %}
+                                {% for upload in uploads %}
+                                    {% if upload.user == selecteduser.username %}
+
+                                        <div class="medium-2 columns text-center float-left">
+                                            <img src="{{ MEDIA_URL }}{{ upload.picture }}"
+                                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px"
+                                                 width="128px">
+                                            <p>
+
+                                            <p class="list-group-item-heading">
+                                                Name: {{ upload.name }}
+                                                {% comment %}
+                            Type: {{ upload.category }}<br>
+                            Price: {{ upload.price }}<br>
+                            Comment: {{ upload.comment }}<br>
+                            Submitted by: {{ upload.user }}<br>
+                            {% endcomment %}
+
+                                        </div>
+                                        {% if forloop.counter|divisibleby:6 %}
+                                            </div>
+                                            <div class="row">
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             </div>
+                            {% else %}
+                                <div class="row">
+                                    <p>No Uploads</p>
+                                </div>
+                            {% endif %}
+
+
                     {% else %}
                         <p style="padding-left:300px"><strong>Website:</strong> <a
                                 href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                         <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
                     {% endif %}
 
-                <div id="edit_profile"></div>
-            </div>
-        </div>
-        </div>
+        <div id="edit_profile"></div>
+
+
 
 
 
