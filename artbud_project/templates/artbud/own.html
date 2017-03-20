@@ -1,0 +1,43 @@
+{% extends 'artbud/upload.html' %}
+{% load staticfiles %}
+
+{% block bodyblock %}
+{% if user.is_authenticated %}
+        {% if uploads %}
+            <div class="row">
+                {% for upload in uploads %}
+
+                        <div class="medium-2 columns text-center float-left">
+                            <img src="{{ MEDIA_URL }}{{ upload.picture }}"
+                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
+                            <p>
+
+                        <p class="list-group-item-heading">
+                            Name: {{ upload.name }}
+                            {% comment %}
+                            Type: {{ upload.category }}<br>
+                            Price: {{ upload.price }}<br>
+                            Comment: {{ upload.comment }}<br>
+                            Submitted by: {{ upload.user }}<br>
+                            {% endcomment %}
+
+                        </div>
+                        {% if forloop.counter|divisibleby:6 %}
+                        </div>
+                            <div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row">
+            <p>No Uploads</p>
+            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="row">
+        <p>You are not Signed in.
+            <br>Please Sign in or Sign up before uploading.
+        </p>
+    {% endif %}
+{% endblock %}
