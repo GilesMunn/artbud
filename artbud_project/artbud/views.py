@@ -237,7 +237,7 @@ def user_upload(request):
 	
 
 def art_display(request, username, uploaded_picture):
-	uploads = Upload.objects.filter(name=uploaded_picture)
+	uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
 	
 	return render(request, 'artbud/art_display.html', {'uploads': uploads})
 

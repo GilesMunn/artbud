@@ -73,7 +73,7 @@ class Upload(models.Model):
     category = models.CharField(max_length=128)
     name = models.CharField(max_length=128)
     picture = models.ImageField(upload_to=user_directory_path)
-    price = models.IntegerField(default=0)
+    price = models.CharField(max_length=128)
     comment = models.CharField(max_length=256)
 
     def __str__(self):
