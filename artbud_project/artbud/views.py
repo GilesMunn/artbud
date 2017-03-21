@@ -35,7 +35,7 @@ def logout(request):
     response = render(request, 'registration/logout.html', context_dict)
     return response
 
-	
+
 @login_required
 def add_artwork(request):
     context_dict = {}
@@ -129,7 +129,8 @@ def user_upload_photography(request):
         uploads = Upload.objects.filter(category="Photography")
 
     return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
+
 @login_required
 def user_upload_sculpture(request):
     if request.method == 'POST':
@@ -148,7 +149,8 @@ def user_upload_sculpture(request):
         uploads = Upload.objects.filter(category="Sculpture")
 
     return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
+
 @login_required
 def user_upload_drawing(request):
     if request.method == 'POST':
@@ -167,7 +169,28 @@ def user_upload_drawing(request):
         uploads = Upload.objects.filter(category="Drawing")
 
     return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
+
+@login_required
+def user_upload_profile(request):
+    if request.method == 'POST':
+        upload_form = UploadForm(request.POST, request.FILES)
+        if upload_form.is_valid():
+            upload = upload_form.save(commit=False)
+            upload.user = request.user
+            if 'picture' in request.FILES:
+                upload.picture = request.FILES['picture']
+            upload.save()
+            return render(request, 'artbud/upload_complete.html', {'upload_form': upload_form})
+        else:
+            print(upload_form.errors)
+    else:
+        upload_form = UploadForm()
+        uploads = Upload.objects.filter(user=request.user)
+
+    return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
+
+
 @login_required
 def user_upload_painting(request):
     if request.method == 'POST':
@@ -186,7 +209,8 @@ def user_upload_painting(request):
         uploads = Upload.objects.filter(category="Painting")
 
     return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
+
 @login_required
 def user_upload_other(request):
     if request.method == 'POST':
@@ -205,7 +229,8 @@ def user_upload_other(request):
         uploads = Upload.objects.filter(category="Other")
 
     return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
+
 @login_required
 def user_upload(request):
     if request.method == 'POST':
@@ -221,7 +246,6 @@ def user_upload(request):
             print(upload_form.errors)
     else:
         upload_form = UploadForm()
-	uploads = Upload.objects.all()
+        uploads = Upload.objects.all()
 
-    return render(request, 'artbud/upload.html',{'uploads': uploads, 'upload_form': upload_form})
-	
+    return render(request, 'artbud/upload.html', {'uploads': uploads, 'upload_form': upload_form})
