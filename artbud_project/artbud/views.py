@@ -243,7 +243,7 @@ def art_display(request, username, uploaded_picture):
 
 
 def art_delete(request, username, uploaded_picture):
-	uploads = Upload.objects.filter(name=uploaded_picture)
+	uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
 	uploads.delete()
 	
 	return render(request, 'artbud/art_delete.html', {'uploads': uploads})
