@@ -16,5 +16,6 @@ urlpatterns = [
 	url(r'^category/other/$', views.user_upload_other, name='other'),
 	url(r'^add_artwork/$', views.add_artwork, name='add_artwork'),
 	url(r'^upload/$', views.user_upload, name='upload'),
-	url(r'^profile/(?P<username>[\w\-]+)/(?P<uploaded_picture>[\w\-]+)/$', views.art_display, name='art_display')
+	url(r'^profile/(?P<username>[\w\-]+)/(?P<uploaded_picture>[\w\-]+)/$', views.art_display, name='art_display'),
+	url(r'^profile/(?P<username>[\w\-]+)/(?P<uploaded_picture>[\w\-]+)/delete/$', views.art_delete, name='art_delete'),
 ]
