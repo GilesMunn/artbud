@@ -35,7 +35,7 @@ def logout(request):
     response = render(request, 'registration/logout.html', context_dict)
     return response
 
-
+	
 @login_required
 def add_artwork(request):
     context_dict = {}
@@ -209,18 +209,13 @@ def user_upload_other(request):
 @login_required
 def user_upload(request):
     if request.method == 'POST':
-
         upload_form = UploadForm(request.POST, request.FILES)
-
         if upload_form.is_valid():
-            
             upload = upload_form.save(commit=False)
             upload.user = request.user
-
             if 'picture' in request.FILES:
                 upload.picture = request.FILES['picture']
             upload.save()
-
             return render(request, 'artbud/upload_complete.html', {'upload_form': upload_form})
         else:
             print(upload_form.errors)
