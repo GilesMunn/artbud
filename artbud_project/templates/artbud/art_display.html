@@ -34,12 +34,13 @@
                             <p>
 
                         <p class="list-group-item-heading">
-                           Name: {{ upload.name }}
+                           Name: {{ upload.name }}<br>
                             Type: {{ upload.category }}<br>
                             Price: {{ upload.price }}<br>
                             Comment: {{ upload.comment }}<br>
                             Submitted by: {{ upload.user }}<br>
-
+						</div>
+						</div>
                         </div>
                         {% if forloop.counter|divisibleby:6 %}
                         </div>
