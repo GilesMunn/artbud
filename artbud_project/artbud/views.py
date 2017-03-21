@@ -11,8 +11,7 @@ from registration.backends.simple.views import RegistrationView
 
 def index(request):
     page_list = Page.objects.order_by('-views')[:5]
-    category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {'categories': category_list, 'pages': page_list}
+    context_dict = {'pages': page_list}
 
     response = render(request, 'artbud/index.html', context_dict)
     return response
@@ -95,21 +94,6 @@ def list_profiles(request):
 
     return render(request, 'artbud/list_profiles.html',
                   {'userprofile_list': userprofile_list})
-
-
-@login_required
-def like_category(request):
-    cat_id = None
-    if request.method == 'GET':
-        cat_id = request.GET['category_id']
-        likes = 0
-    if cat_id:
-        cat = Category.objects.get(id=int(cat_id))
-        if cat:
-            likes = cat.likes + 1
-            cat.likes = likes
-            cat.save()
-        return HttpResponse(likes)
 
 
 @login_required
@@ -250,3 +234,11 @@ def user_upload(request):
         uploads = Upload.objects.all()
 
     return render(request, 'artbud/upload.html', {'uploads': uploads, 'upload_form': upload_form})
+	
+
+def art_display(request, username, uploaded_picture):
+	uploads = Upload.objects.filter(name=uploaded_picture)
+	
+	return render(request, 'artbud/art_display.html', {'uploads': uploads})
+
+

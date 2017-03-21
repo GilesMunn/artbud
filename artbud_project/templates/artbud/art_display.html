@@ -23,34 +23,40 @@
 {% endblock %}
 
 {% block bodyblock %}
-    {% if user.is_authenticated %}
-        <div class="row">
-            <div class="large-5 columns">
+{% if user.is_authenticated %}
+        {% if uploads %}
+            <div class="row">
+                {% for upload in uploads %}
+
+                        <div>
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
-                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
+                                 alt="Picture of {{ upload.name }}" height="512px" width="512px">
                             <p>
-                            </div>
-            <div class="large-7 columns">
+
                         <p class="list-group-item-heading">
-                            Name: {{ upload.name }}
+                           Name: {{ upload.name }}
                             Type: {{ upload.category }}<br>
                             Price: {{ upload.price }}<br>
                             Comment: {{ upload.comment }}<br>
                             Submitted by: {{ upload.user }}<br>
-                
+
                         </div>
-        </div>
-
-
+                        {% if forloop.counter|divisibleby:6 %}
+                        </div>
+                            <div class="row">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row">
+            <center><h4>No Uploads</h4></center>
+            </div>
+        {% endif %}
 
     {% else %}
         <div class="row">
-            <p>You are not logged in.
-                <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a>
-                before uploading.
-            </p>
-        </div>
+        <p>You are not Signed in.
+            <br>Please Sign in or Sign up before uploading.
+        </p>
     {% endif %}
-
-
 {% endblock %}
