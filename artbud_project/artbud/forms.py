@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from artbud.models import Category, Page, UserProfile, Upload
+from artbud.models import Page, UserProfile, Upload
 
 
 class PageForm(forms.ModelForm):
@@ -25,6 +25,7 @@ class PageForm(forms.ModelForm):
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password')

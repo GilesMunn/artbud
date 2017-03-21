@@ -15,62 +15,64 @@
 {% endblock %}
 
 {% block bodyblock %}
-	<div class="row">
-    <div class="large-4 large-centered columns">
-    <p>
-    <div>
-	<center>
-        <h1 class="display-3">Uploads</h1>
-		
-{% if user.is_authenticated %}
-<div class="medium-9 columns">
-		</center>
-	<form id="upload_form" class="form-body" role="form" method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ upload_form.as_P }}
-				
-				<p>
-				
-				<label for="id_name" style="padding-right:17px">Name: </label>
-				<input id="id_picture" maxlength="128" name="name" type="text" placeholder="Mona Lisa">
-				
-				<p>
-				
-				<label for="id_category">Category: </label>
-				<select id="id_category" name="category">
-					<option value>-----------</option>
-					<option value="Drawing">Drawing</option>
-					<option value="Painting">Painting</option>
-					<option value="Photography">Photograph</option>
-					<option value="Sculpture">Sculpture</option>
-					<option value="Other">Other</option>
-				</select>
-				
-				<p>
-				
-				<label for="id_price" style="padding-right:17px">Price: </label>
-				<input type="text" id="id_price" name="price" placeholder="£250.00">
-				
-				<p>
-				
-				<label for="id_comment" style="padding-right:38px">Comment: </label>
-					<textarea style="max-height:200px" id="id_comment" class="form-control" name="comment" placeholder="Something about the piece..." ></textarea>
-					
-				<p>
-				
-				<label for="id_picture" style="padding-right:17px">Artwork: </label>
-				<input type="file" id="id_picture" name="picture">
-		
-				<p>
-				<button class="button_submit" type="submit" name="submit" value="Upload" />Upload</button>
-		</form>
-	</div>
-	</div>
-	</div>
-	
-{% else %}
-		<p>You are not logged in. 
-		<br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a> before uploading.
-		</p>
-	{% endif %}
+    <div class="row">
+        <div class="large-4 large-centered columns">
+            <p>
+                <div>
+                    <h1 class="display-3">Uploads</h1>
+
+                    {% if user.is_authenticated %}
+                        <div class="medium-9 columns">
+                            <form id="upload_form" class="form-body" role="form" method="post"
+                                  action="{% url 'upload' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ upload_form.as_P }}
+
+                        <p>
+
+                            <label for="id_name" style="padding-right:17px">Name: </label>
+                            <input id="id_picture" maxlength="128" name="name" type="text" placeholder="Mona Lisa">
+
+                        <p>
+
+                            <label for="id_category">Category: </label>
+                            <select id="id_category" name="category">
+                                <option value>-----------</option>
+                                <option value="Drawing">Drawing</option>
+                                <option value="Painting">Painting</option>
+                                <option value="Photography">Photograph</option>
+                                <option value="Sculpture">Sculpture</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                        <p>
+
+                            <label for="id_price" style="padding-right:17px">Price: </label>
+                            <input type="text" id="id_price" name="price" placeholder="£250.00">
+
+                        <p>
+
+                            <label for="id_comment" style="padding-right:38px">Comment: </label>
+                            <textarea style="max-height:200px" id="id_comment" class="form-control" name="comment"
+                                      placeholder="Something about the piece..."></textarea>
+
+                        <p>
+
+                            <label for="id_picture" style="padding-right:17px">Artwork: </label>
+                            <input type="file" id="id_picture" name="picture">
+
+                        <p>
+                            <button class="button_submit" type="submit" name="submit" value="Upload"/>
+                            Upload
+                            </form>
+                        </div>
+                        </div>
+                        </div>
+
+                    {% else %}
+                        <p>You are not logged in.
+                            <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a
+                                    href="{% url 'registration_register' %}">Register</a> before uploading.
+                        </p>
+                    {% endif %}
 {% endblock %}

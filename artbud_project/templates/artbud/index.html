@@ -3,51 +3,52 @@
 
 {% block title_block %} Homepage {% endblock %}
 
-{% block table_auth %}	
-	<li class="active"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
+{% block table_auth %}
+    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
 {% endblock %}
-{% block table_notauth %}	
-	<li class="active"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-	<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-	<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% block table_notauth %}
+    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 {% block bodyblock %}
 
     <div class="row">
-    <div class="large-10 large-centered columns text-center">
-	
-        {% if user.is_authenticated %}
-            <p align="right" style="vertical-align: top">Welcome, {{ user.username }}! • <a
-                    href="{% url 'list_profiles' %}">Artists</a></p>
-        {% endif %}
-		
-        <p></p>
-        <img class="curv_image" src="{% static 'images/homepage_banner.jpg' %}" alt="Artbud Banner"
-             style="border-radius: 25px;"/>
-    </div>
+        <div class="large-10 large-centered columns text-center">
+
+            {% if user.is_authenticated %}
+                <p align="right" style="vertical-align: top">Welcome, {{ user.username }}! • <a
+                        href="{% url 'list_profiles' %}">Artists</a></p>
+            {% endif %}
+
+            <p></p>
+            <img class="curv_image" src="{% static 'images/homepage_banner.jpg' %}" alt="Artbud Banner"
+                 style="border-radius: 25px;"/>
+        </div>
     </div>
     <p></p>
     <div class="row column">
-    <p></p>
+        <p></p>
     </div>
     <div class="row">
         <div class="medium-6 columns text-center">
 
             <img class="round_image" src="{% static 'images/artwork_1.jpg' %}"/>
             <p></p>
-            <p><h2>Best Rated</h2></p>
-
+            <p>
+            <h2>Best Rated</h2>
         </div>
         <div class="medium-6 columns text-center">
 
             <img class="round_image" src="{% static 'images/artwork_2.jpg' %}"/>
             <p></p>
-                <p><h2>Newest Art</h2></p>
+            <p>
+            <h2>Newest Art</h2>
         </div>
     </div>
 

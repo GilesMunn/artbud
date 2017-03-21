@@ -3,103 +3,65 @@
 
 {% block title_block %}Artwork{% endblock %}
 
-{% block table_auth %}	
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="active"><a href="{% url 'category' %}">Artwork</a></li>
-<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+{% block table_auth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
 {% endblock %}
-{% block table_notauth %}	
-<li class="step"><a href="{% url 'index' %}">Home</a></li>
-<li class="active"><a href="{% url 'category' %}">Artwork</a></li>
-<li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-<li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
 {% endblock %}
 
 {% block bodyblock %}
     <div class="row">
         <div class="medium-6 columns text-center">
-			<a href="{% url 'painting' %}">
-            <img class="round_image" src="{% static 'images/painting.jpg' %}"/>
-			</a>
+            <a href="{% url 'painting' %}">
+                <img class="round_image" src="{% static 'images/painting.jpg' %}"/>
+            </a>
             <p></p>
             <p>
-            <h2>Painting</h2></p>
+            <h2>Painting</h2>
         </div>
         <div class="medium-6 columns text-center">
             <a href="{% url 'photography' %}">
-			<img class="round_image" src="{% static 'images/photography.jpg' %}"/>
-			</a>
+                <img class="round_image" src="{% static 'images/photography.jpg' %}"/>
+            </a>
             <p></p>
             <p>
-            <h2>Photography</h2></p>
+            <h2>Photography</h2>
         </div>
     </div>
     <div class="row">
         <div class="medium-4 columns text-center">
-			<a href="{% url 'sculpture' %}">
-            <img class="round_image" src="{% static 'images/sculpture.jpg' %}"/>
-			</a>
+            <a href="{% url 'sculpture' %}">
+                <img class="round_image" src="{% static 'images/sculpture.jpg' %}"/>
+            </a>
             <p></p>
             <p>
-            <h2>Sculpture</h2></p>
+            <h2>Sculpture</h2>
         </div>
         <div class="medium-4 columns text-center">
 
-			<a href="{% url 'drawing' %}">
-            <img class="round_image" src="{% static 'images/drawing.jpg' %}"/>
-			</a>
+            <a href="{% url 'drawing' %}">
+                <img class="round_image" src="{% static 'images/drawing.jpg' %}"/>
+            </a>
             <p></p>
             <p>
-            <h2>Drawing</h2></p>
+            <h2>Drawing</h2>
         </div>
         <div class="medium-4 columns text-center">
-			<a href="{% url 'other' %}">
-            <img class="round_image" src="{% static 'images/other.jpg' %}"/>
-			</a>
+            <a href="{% url 'other' %}">
+                <img class="round_image" src="{% static 'images/other.jpg' %}"/>
+            </a>
             <p></p>
             <p>
-            <h2>Other</h2></p>
+            <h2>Other</h2>
         </div>
     </div>
 
-    {% comment %}
-	{% if category %}
-		<h1>{{category.name}}</h1>
-		<div>
-	<strong id="like_count">{{ category.likes }}</strong> people like this category
-	{% if user.is_authenticated %}
-		<button id="likes" data-catid="{{category.id}}" class="btn btn-primary btn-sm" type="button">
-			Like
-		</button>
-	{% endif %}
-	</div>
-		{% if pages %}
-			<ul>
-			{% for page in pages %}
-		<li>
-			<a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a>
-			{% if page.views > 1 %}
-				({{ page.views }} views)
-			{% elif page.views == 1 %}
-				({{ page.views }} view)
-			{% endif %}
-		</li>
-		{% endfor %}
-			</ul>
-		{% else %}
-			<div>
-				No pages currently in category.
-			</div>
-		{% endif %}
-		{% if user.is_authenticated %}
-		<ul>
-		<a href="{% url 'add_page' category.slug %}">Add a Page</a>
-		</ul>
-		{% endif %}
-	{% else %}
-		The specified category does not exist!
-	{% endif %}
-{% endcomment %}
 
 {% endblock %}

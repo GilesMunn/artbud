@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from artbud.models import Page, UserProfile, Upload
-from artbud.forms import PageForm, UserForm, UserProfileForm, UploadForm
+from artbud.forms import UserProfileForm, UploadForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from registration.backends.simple.views import RegistrationView
@@ -66,6 +64,7 @@ class artbudRegistrationView(RegistrationView):
         return reverse('register_profile')
 
 
+@login_required
 def profile(request, username):
     try:
         user = User.objects.get(username=username)
@@ -234,33 +233,16 @@ def user_upload(request):
         uploads = Upload.objects.all()
 
     return render(request, 'artbud/upload.html', {'uploads': uploads, 'upload_form': upload_form})
-	
+
 
 def art_display(request, username, uploaded_picture):
-	uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
-	
-	return render(request, 'artbud/art_display.html', {'uploads': uploads})
+    uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
+
+    return render(request, 'artbud/art_display.html', {'uploads': uploads})
 
 
 def art_delete(request, username, uploaded_picture):
-	uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
-	uploads.delete()
-	
-	return render(request, 'artbud/art_delete.html', {'uploads': uploads})
-	
+    uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
+    uploads.delete()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return render(request, 'artbud/art_delete.html', {'uploads': uploads})

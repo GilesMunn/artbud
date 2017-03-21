@@ -20,31 +20,31 @@
 {% block bodyblock %}
     {% if user.is_authenticated %}
         <div class="row">
-            <center><h1>Artists</h1><center>
+        <div style="text-align: center;"><h1>Artists</h1>
         </div>
 
         {% if userprofile_list %}
             <div class="row">
-            {% for listuser in userprofile_list %}
+                {% for listuser in userprofile_list %}
 
-                <div class="medium-2 columns text-center float-left">
-                    {% if listuser.picture %}
-                        <img width="128px" height="128px" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
-                    {% else %}
-                        <img width="128" height="128" src="https://tinyurl.com/hea49k5"/>
-                    {% endif %}
+                    <div class="medium-2 columns text-center float-left">
+                        {% if listuser.picture %}
+                            <img width="128px" height="128px" src="{{ MEDIA_URL }}{{ listuser.picture }}"/>
+                        {% else %}
+                            <img width="128" height="128" src="https://tinyurl.com/hea49k5"/>
+                        {% endif %}
 
 
-                    <h4 class="list-group-item-heading">
-                        <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
-                    </h4>
-                </div>
-                {% if forloop.counter|divisibleby:6 %}
+                        <h4 class="list-group-item-heading">
+                            <a href="{% url 'profile' listuser.user.username %}">{{ listuser.user.username }}</a>
+                        </h4>
                     </div>
-                    <div class="row">
-                {% endif %}
-            {% endfor %}
-        </div>
+                    {% if forloop.counter|divisibleby:6 %}
+                        </div>
+                        <div class="row">
+                    {% endif %}
+                {% endfor %}
+                </div>
 
 
 

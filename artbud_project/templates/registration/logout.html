@@ -1,20 +1,21 @@
 {% extends "artbud/base.html" %}
-	
-	{% block title_block %}
-		Logged Out
-	{% endblock %}
-	
-	{% block bodyblock %}
-		<div class="row">
+
+{% block title_block %}
+    Logged Out
+{% endblock %}
+
+{% block bodyblock %}
+    <div class="row">
         <div class="large-12 columns text-center">
             <h1 class="display-3">
-                <center>You have been logged out.</center>
+                You have been logged out.
             </h1>
-			<p>
-				<center>Redirecting to homepage.</center>
-			</p>
+            <p>
+            <div style="text-align: center;">Redirecting to homepage.</div>
+
         </div>
-		
-		<meta http-equiv="refresh" content="3;{% url 'index' %}" />
-	{% endblock %}
+    </div>
+
+    <meta http-equiv="refresh" content="3;{% url 'index' %}"/>
+{% endblock %}
 	
