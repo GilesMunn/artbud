@@ -1,0 +1,56 @@
+{% extends "artbud/base.html" %}
+
+{% block title_block %}{{ uploads.name }}{% endblock %}
+
+{% block table_auth %}
+    {% if selecteduser.username == user.username %}
+        <li class="step"><a href="{% url 'index' %}">Home</a></li>
+        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+        <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+            {% else %}
+        <li class="step"><a href="{% url 'index' %}">Home</a></li>
+        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+        <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+    {% endif %}
+{% endblock %}
+{% block table_notauth %}
+    <li class="step"><a href="{% url 'index' %}">Home</a></li>
+    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
+    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
+{% endblock %}
+
+{% block bodyblock %}
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="large-5 columns">
+                            <img src="{{ MEDIA_URL }}{{ upload.picture }}"
+                                 alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
+                            <p>
+                            </div>
+            <div class="large-7 columns">
+                        <p class="list-group-item-heading">
+                            Name: {{ upload.name }}
+                            Type: {{ upload.category }}<br>
+                            Price: {{ upload.price }}<br>
+                            Comment: {{ upload.comment }}<br>
+                            Submitted by: {{ upload.user }}<br>
+                
+                        </div>
+        </div>
+
+
+
+    {% else %}
+        <div class="row">
+            <p>You are not logged in.
+                <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a href="{% url 'registration_register' %}">Register</a>
+                before uploading.
+            </p>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
