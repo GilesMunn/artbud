@@ -73,6 +73,7 @@ def profile(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
+    uploads = Upload.objects.filter(user=request.user)
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
     form = UserProfileForm(
         {'website': userprofile.website, 'picture': userprofile.picture, 'bio': userprofile.bio})
@@ -86,7 +87,7 @@ def profile(request, username):
             print(form.errors)
 
     return render(request, 'artbud/profile.html',
-                  {'userprofile': userprofile, 'selecteduser': user, 'form': form})
+                  {'userprofile': userprofile, 'selecteduser': user, 'form': form, 'uploads': uploads})
 
 
 def list_profiles(request):
