@@ -11,8 +11,7 @@ from registration.backends.simple.views import RegistrationView
 
 def index(request):
     page_list = Page.objects.order_by('-views')[:5]
-    category_list = Category.objects.order_by('-likes')[:5]
-    context_dict = {'categories': category_list, 'pages': page_list}
+    context_dict = {'pages': page_list}
 
     response = render(request, 'artbud/index.html', context_dict)
     return response

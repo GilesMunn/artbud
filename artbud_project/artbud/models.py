@@ -69,25 +69,25 @@ def user_directory_path(instance, filename):
 
 
 class Upload(models.Model):
-	user = models.ForeignKey(User)
-	category = models.CharField(max_length=128)
-	name = models.CharField(max_length=128)
-	picture = models.ImageField(upload_to=user_directory_path)
-	price = models.IntegerField(default=0)
-	comment = models.CharField(max_length=256)
+    user = models.ForeignKey(User)
+    category = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+    picture = models.ImageField(upload_to=user_directory_path)
+    price = models.IntegerField(default=0)
+    comment = models.CharField(max_length=256)
 
-	def __str__(self):
-		return self.name
+    def __str__(self):
+        return self.name
 
-	def __unicode__(self):
-		return self.name
+    def __unicode__(self):
+        return self.name
 
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type','object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
 
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -97,20 +97,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.user.username)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
