@@ -172,7 +172,7 @@ def user_upload_drawing(request):
 
 
 @login_required
-def user_upload_profile(request):
+def user_upload_profile(request, username):
     if request.method == 'POST':
         upload_form = UploadForm(request.POST, request.FILES)
         if upload_form.is_valid():

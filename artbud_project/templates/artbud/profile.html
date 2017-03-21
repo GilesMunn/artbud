@@ -92,6 +92,13 @@
 
 
 
+<div class="row">
+	{% block artworkblock %}
+		{% include 'artbud/user_artwork.html' %}
+	{% endblock %}
+	</div>
+	
+	
 
 
     {% else %}
@@ -100,5 +107,7 @@
             before uploading.
         </p>
     {% endif %}
+	
 {% endblock %}
+	
 
