@@ -17,5 +17,4 @@ urlpatterns = [
     url(r'^category/other/$', views.user_upload_other, name='other'),
     url(r'^add_artwork/$', views.add_artwork, name='add_artwork'),
     url(r'^upload/$', views.user_upload, name='upload'),
-    url(r'^profile/(?P<username>[\w\-]+)/artwork', views.user_upload_profile, name='user_artwork')
 ]
