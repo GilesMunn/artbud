@@ -3,17 +3,10 @@
 {% block title_block %}{{ uploads.name }}{% endblock %}
 
 {% block table_auth %}
-    {% if selecteduser.username == user.username %}
         <li class="step"><a href="{% url 'index' %}">Home</a></li>
-        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-        <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
-            {% else %}
-        <li class="step"><a href="{% url 'index' %}">Home</a></li>
-        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+        <li class="active"><a href="{% url 'category' %}">Artwork</a></li>
         <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
         <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
-    {% endif %}
 {% endblock %}
 
 {% block bodyblock %}
@@ -64,8 +57,10 @@
 
     {% else %}
         <div class="row">
-        <p>You are not Signed in.
-            <br>Please Sign in or Sign up before uploading.
-        </p>
+                            <p>You are not logged in.
+                                <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a
+                                        href="{% url 'registration_register' %}">Register</a> before viewing.
+                            </p>
+                        </div>
     {% endif %}
 {% endblock %}
