@@ -41,7 +41,7 @@
                             Submitted by: <a href="{% url 'profile' upload.user %}"> {{ upload.user }}</a>
 
 					{% if upload.user == user %}
-                        <form method="get" action="{% url 'art_delete' upload.user upload.name %}">
+                        <form method="get" action="{% url 'art_delete' user.username upload.name %}">
                             <div class="input-group-button">
                                 <input class="button_submit" type="submit" value="Delete Artwork"/>
                             </div>
