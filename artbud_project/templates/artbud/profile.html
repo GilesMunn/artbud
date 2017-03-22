@@ -49,8 +49,8 @@
                     {% if selecteduser.username == user.username %}
                         <form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
                             {% csrf_token %}
-						<p>
-							<label>Email: {{ selecteduser.email }}</label>
+                        <p>
+                            <label>Email: {{ selecteduser.email }}</label>
                         <p>
                             <label for="id_websiteebsite" class="sr-only">Website: {{ userprofile.website }}</label>
                             <input type="text" id="id_website" class="form-control" name="website"
@@ -71,12 +71,14 @@
                                 <input class="button_submit" type="submit" style="margin:  0 30px 0 0 ;"
                                        value="Update"/>
                             </div>
-                        </form>
+                            </form>
 
                             <form method="get" action="{% url 'add_artwork' %}">
                                 <div class="input-group-button">
-                                    <input class="button_submit" type="submit" value="Add Artwork"/>
+                                    <input class="button_submit" type="submit" value="Add Artwork">
                                 </div>
+
+
                             </form>
 
                         </div>
@@ -84,9 +86,11 @@
                         </div>
 
                     {% else %}
+
                         <p style="padding-left:300px"><strong>Website:</strong> <a
                                 href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                         <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
+
                     {% endif %}
 
         <div id="edit_profile"></div>
@@ -114,7 +118,7 @@
                     {% if forloop.counter|divisibleby:6 %}
                         </div>
                         <div class="row">
-					{% endif %}
+                    {% endif %}
                 {% endfor %}
                 </div>
         {% else %}
