@@ -22,7 +22,6 @@
                     <h1 class="display-3">Uploads</h1>
 
                     {% if user.is_authenticated %}
-                        <div class="medium-9 columns">
                             <form id="upload_form" class="form-body" role="form" method="post"
                                   action="{% url 'upload' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
@@ -61,18 +60,20 @@
                             <label for="id_picture" style="padding-right:17px">Artwork: </label>
                             <input type="file" id="id_picture" name="picture">
 
-                        <p>
-                            <button class="button_submit" type="submit" name="submit" value="Upload"/>
-                            Upload
-                            </form>
-                        </div>
+                        <p></p>
+                        <button class="button_submit" type="submit" name="submit" value="Upload"/>
+                        Upload
+                        </form>
                         </div>
                         </div>
 
+
                     {% else %}
-                        <p>You are not logged in.
-                            <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a
-                                    href="{% url 'registration_register' %}">Register</a> before uploading.
-                        </p>
+                        <div class="row">
+                            <p>You are not logged in.
+                                <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a
+                                        href="{% url 'registration_register' %}">Register</a> before uploading.
+                            </p>
+                        </div>
                     {% endif %}
 {% endblock %}
