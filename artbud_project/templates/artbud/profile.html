@@ -49,6 +49,8 @@
                     {% if selecteduser.username == user.username %}
                         <form class="form-signin" role="form" method="post" action="." enctype="multipart/form-data">
                             {% csrf_token %}
+						<p>
+							<label>Email: {{ selecteduser.email }}</label>
                         <p>
                             <label for="id_websiteebsite" class="sr-only">Website: {{ userprofile.website }}</label>
                             <input type="text" id="id_website" class="form-control" name="website"
@@ -62,7 +64,6 @@
                         <p>
                             <label for="id_picture" style="padding-right:17px">Profile Picture: </label>
                             <input type="file" id="id_picture" name="picture">
-
 
 
                         <div class="input-group">
@@ -94,7 +95,7 @@
             <div class="row">
                 {% for upload in uploads %}
                     <div class="medium-2 columns text-center float-left">
-                        <a href="{% url 'art_display' user.username upload.name %}">
+                        <a href="{% url 'art_display' upload.user upload.name %}">
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
                                  alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
                         </a>

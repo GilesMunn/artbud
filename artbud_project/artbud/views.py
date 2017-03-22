@@ -216,14 +216,14 @@ def user_upload(request):
 
 
 def art_display(request, username, uploaded_picture):
-	selected_user = str(username)
 	uploads = Upload.objects.filter(name=uploaded_picture)
 
 	return render(request, 'artbud/art_display.html', {'uploads': uploads})
 
 
 def art_delete(request, username, uploaded_picture):
-    uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
-    uploads.delete()
 
-    return render(request, 'artbud/art_delete.html', {'uploads': uploads})
+	uploads = Upload.objects.filter(name=uploaded_picture, user=username)
+	uploads.delete()
+
+	return render(request, 'artbud/art_delete.html', {'uploads': uploads})

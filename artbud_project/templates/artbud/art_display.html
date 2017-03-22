@@ -15,12 +15,6 @@
         <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
     {% endif %}
 {% endblock %}
-{% block table_notauth %}
-    <li class="step"><a href="{% url 'index' %}">Home</a></li>
-    <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-    <li class="step"><a href="{% url 'registration_register' %}">Register</a></li>
-    <li class="step"><a href="{% url 'auth_login' %}">Login</a></li>
-{% endblock %}
 
 {% block bodyblock %}
     {% if user.is_authenticated %}
@@ -44,16 +38,18 @@
                             Type: {{ upload.category }}<br>
                             Price: {{ upload.price }}<br>
                             Comment: {{ upload.comment }}<br>
-                            Submitted by: {{ upload.user }}<br>
+                            Submitted by: <a href="{% url 'profile' upload.user %}"> {{ upload.user }}</a>
 
-
-                        <form method="get" action="{% url 'art_delete' user.username upload.name %}">
+					{% if upload.user == user %}
+                        <form method="get" action="{% url 'art_delete' upload.user upload.name %}">
                             <div class="input-group-button">
                                 <input class="button_submit" type="submit" value="Delete Artwork"/>
                             </div>
                         </form>
-                    </div>
-
+					{% endif %}
+                   
+					
+				</div>
 
                 {% endfor %}
             </div>
