@@ -5,15 +5,15 @@
 
 {% block table_auth %}
     {% if selecteduser.username == user.username %}
-        <li class="step"><a href="{% url 'index' %}">Home</a></li>
-        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-        <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
-            {% else %}
-        <li class="step"><a href="{% url 'index' %}">Home</a></li>
-        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-        <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/">Logout</a>
+	<li class="step"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
+    {% else %}
+	<li class="step"><a href="{% url 'index' %}">Home</a></li>
+	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
     {% endif %}
 {% endblock %}
 {% block table_notauth %}
