@@ -57,8 +57,10 @@
 
     {% else %}
         <div class="row">
-        <p>You are not Signed in.
-            <br>Please Sign in or Sign up before uploading.
-        </p>
+                            <p>You are not logged in.
+                                <br>Please <a href="{% url 'auth_login' %}">Login</a> or <a
+                                        href="{% url 'registration_register' %}">Register</a> before viewing.
+                            </p>
+                        </div>
     {% endif %}
 {% endblock %}
