@@ -1,4 +1,4 @@
-{% extends 'artbud/base.html' %}
+{% extends 'Artbud/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %} Homepage {% endblock %}
@@ -36,19 +36,20 @@
         <p></p>
     </div>
     <div class="row">
-        <div class="medium-6 columns text-center">
+        <div class="medium-4 columns text-center">
 
             <img class="round_image" src="{% static 'images/artwork_1.jpg' %}"/>
             <p></p>
-            <p>
-            <h2>Best Rated</h2>
         </div>
-        <div class="medium-6 columns text-center">
+        <div class="medium-4 columns text-center">
 
             <img class="round_image" src="{% static 'images/artwork_2.jpg' %}"/>
             <p></p>
-            <p>
-            <h2>Newest Art</h2>
+        </div>
+		<div class="medium-4 columns text-center">
+
+            <img class="round_image" src="{% static 'images/artwork_3.jpg' %}"/>
+            <p></p>
         </div>
     </div>
 
