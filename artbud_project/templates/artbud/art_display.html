@@ -23,44 +23,46 @@
 {% endblock %}
 
 {% block bodyblock %}
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
         {% if uploads %}
             <div class="row">
-                {% for upload in uploads %}
 
+                {% for upload in uploads %}
+                    <div class="large-5 columns ">
+                    <p></p>
                         <div>
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
-                                 alt="Picture of {{ upload.name }}" height="512px" width="512px">
+                                 alt="Picture of {{ upload.name }}" height="512px" width="512px"/>
                             <p>
+                        </div>
+                    </div>
+                    <div class="columns-7 text-center ">
+                    <p></p>
 
-                        <p class="list-group-item-heading">
-							Name: {{ upload.name }}<br>
+                        <p class="list-group-item-heading" style="padding: 100px 0 0 0;">
+                            Name: {{ upload.name }}<br>
                             Type: {{ upload.category }}<br>
                             Price: {{ upload.price }}<br>
                             Comment: {{ upload.comment }}<br>
                             Submitted by: {{ upload.user }}<br>
-							
-						
-			<form method="get" action="{% url 'art_delete' user.username upload.name %}">
-                <div class="input-group-button">
-                    <input class="button_submit" type="submit" value="Delete Artwork"/>
-                </div>
-            </form>
-						</div>
-						</div>
-                        </div>
-                        {% if forloop.counter|divisibleby:6 %}
-                        </div>
-                            <div class="row">
-                    {% endif %}
+
+
+                        <form method="get" action="{% url 'art_delete' user.username upload.name %}">
+                            <div class="input-group-button">
+                                <input class="button_submit" type="submit" value="Delete Artwork"/>
+                            </div>
+                        </form>
+                    </div>
+
+
                 {% endfor %}
             </div>
-			
-			
-			
+
+
+
         {% else %}
             <div class="row">
-            <center><h4>No Uploads</h4></center>
+                <center><h4>No Uploads</h4></center>
             </div>
         {% endif %}
 
