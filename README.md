@@ -12,9 +12,9 @@ Python Anywhere link: http://artbud.pythonanywhere.com/
 
 zixk -Dominik Bladek - 2144751b
 
-Giles Munn - 2227780m
+GilesGlasgow - Giles Munn - 2227780m
 
-Charlie Parker - 2144176p
+2144176P - Charlie Parker - 2144176p
 
 Andreas Klitis - 2141487k
 
