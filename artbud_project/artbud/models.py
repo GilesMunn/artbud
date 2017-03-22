@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from random import randint
 
 
 class Category(models.Model):
@@ -65,7 +66,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 def user_directory_path(instance, filename):
-    return 'artwork_images/{0}/{1}'.format(instance.user, filename)
+    return 'artwork_images/{0}/{1}' .format(instance.user, filename)
 
 
 class Upload(models.Model):

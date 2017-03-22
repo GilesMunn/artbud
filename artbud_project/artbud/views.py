@@ -71,7 +71,7 @@ def profile(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
-    uploads = Upload.objects.filter(user=request.user)
+    uploads = Upload.objects.filter(user=user)
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
     form = UserProfileForm(
         {'website': userprofile.website, 'picture': userprofile.picture, 'bio': userprofile.bio})
@@ -156,26 +156,6 @@ def user_upload_drawing(request):
 
 
 @login_required
-def user_upload_profile(request, username):
-    if request.method == 'POST':
-        upload_form = UploadForm(request.POST, request.FILES)
-        if upload_form.is_valid():
-            upload = upload_form.save(commit=False)
-            upload.user = request.user
-            if 'picture' in request.FILES:
-                upload.picture = request.FILES['picture']
-            upload.save()
-            return render(request, 'artbud/upload_complete.html', {'upload_form': upload_form})
-        else:
-            print(upload_form.errors)
-    else:
-        upload_form = UploadForm()
-        uploads = Upload.objects.filter(user=request.user)
-
-    return render(request, 'artbud/artwork.html', {'uploads': uploads, 'upload_form': upload_form})
-
-
-@login_required
 def user_upload_painting(request):
     if request.method == 'POST':
         upload_form = UploadForm(request.POST, request.FILES)
@@ -236,9 +216,10 @@ def user_upload(request):
 
 
 def art_display(request, username, uploaded_picture):
-    uploads = Upload.objects.filter(name=uploaded_picture, user=request.user)
+	selected_user = str(username)
+	uploads = Upload.objects.filter(name=uploaded_picture)
 
-    return render(request, 'artbud/art_display.html', {'uploads': uploads})
+	return render(request, 'artbud/art_display.html', {'uploads': uploads})
 
 
 def art_delete(request, username, uploaded_picture):
