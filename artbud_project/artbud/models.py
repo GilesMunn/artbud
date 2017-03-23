@@ -66,7 +66,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 def user_directory_path(instance, filename):
-    return 'artwork_images/{0}/{1}' .format(instance.user, filename)
+    return 'artwork_images/{0}/{1}'.format(instance.user, filename)
 
 
 class Upload(models.Model):

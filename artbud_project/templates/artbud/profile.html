@@ -5,15 +5,15 @@
 
 {% block table_auth %}
     {% if selecteduser.username == user.username %}
-	<li class="step"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-	<li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
-    <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
-    {% else %}
-	<li class="step"><a href="{% url 'index' %}">Home</a></li>
-	<li class="step"><a href="{% url 'category' %}">Artwork</a></li>
-	<li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
-	<li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
+        <li class="step"><a href="{% url 'index' %}">Home</a></li>
+        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+        <li class="active"><a href="{% url 'profile' user.username %}">Profile</a></li>
+        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
+            {% else %}
+        <li class="step"><a href="{% url 'index' %}">Home</a></li>
+        <li class="step"><a href="{% url 'category' %}">Artwork</a></li>
+        <li class="step"><a href="{% url 'profile' user.username %}">Profile</a></li>
+        <li class="step"><a href="{% url 'auth_logout' %}?next=/artbud/logout/">Logout</a>
     {% endif %}
 {% endblock %}
 {% block table_notauth %}
@@ -71,7 +71,6 @@
                                 <input class="button_submit" type="submit" style="margin:  0 30px 0 0 ;"
                                        value="Update"/>
                             </div>
-                            </form>
 
                             <form method="get" action="{% url 'add_artwork' %}">
                                 <div class="input-group-button">
@@ -86,7 +85,7 @@
                         </div>
 
                     {% else %}
-
+                        <p style="padding-left:300px"><strong>Email:</strong> {{ selecteduser.email }} </p>
                         <p style="padding-left:300px"><strong>Website:</strong> <a
                                 href="{{ userprofile.website }}">{{ userprofile.website }}</a></p>
                         <p style="padding-left:300px"><strong>Bio:</strong> {{ userprofile.bio }}</p>
@@ -103,7 +102,6 @@
                             <img src="{{ MEDIA_URL }}{{ upload.picture }}"
                                  alt="Picture of {{ upload.name }}" class="thumbnail" height="128px" width="128px">
                         </a>
-                        <p>
 
                         <p class="list-group-item-heading">
                             Name: {{ upload.name }}
