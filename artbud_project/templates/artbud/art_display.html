@@ -36,7 +36,8 @@
 					{% if upload.user == user %}
                         <form method="get" action="{% url 'art_delete' user.username upload.name %}">
                             <div class="input-group-button">
-                                <input class="button_submit" type="submit" value="Delete Artwork"/>
+
+                                <input class="button_submit" style="margin: 0 auto;" type="submit" value="Delete Artwork"/>
                             </div>
                         </form>
 					{% endif %}
