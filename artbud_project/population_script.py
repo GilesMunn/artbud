@@ -71,7 +71,7 @@ def get_or_create_user(username):
 	return user
 			
 def add_art(user, category, name, picture, price, comment): 
-	p = Upload.objects.get_or_create(user=get_or_create_user(name), category=category, 
+	p = Upload.objects.get_or_create(user=get_or_create_user(user), category=category, 
 	name=name,picture=picture, price=price, comment=comment)[0]
 	p.save()
 	return p
