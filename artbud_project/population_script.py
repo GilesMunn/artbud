@@ -63,18 +63,18 @@ def get_or_create_user(username):
     password='placeholder987'
     try:
         user = User.objects.create_user(username, email, password)
- #       user.save()
+        user.save()
         userprofile = UserProfile(user=user)
- #       userprofile.save()
+        userprofile.save()
     except:
         user = User.objects.get(username=username)
-	return user
+    return user
 			
 def add_art(user, category, name, picture, price, comment): 
-	p = Upload.objects.get_or_create(user=get_or_create_user(user), category=category, 
-	name=name,picture=picture, price=price, comment=comment)[0]
-	p.save()
-	return p
+    p = Upload.objects.get_or_create(user=get_or_create_user(user), category=category, 
+    name=name,picture=picture, price=price, comment=comment)[0]
+    p.save()
+    return p
 
 if __name__ == '__main__':
     print("Starting Artbud population script...")
